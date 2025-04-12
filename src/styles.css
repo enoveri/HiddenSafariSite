@@ -1,0 +1,3721 @@
+/* Landing Page */
+
+box-sizing: border-box;
+
+position: relative;
+width: 1280px;
+height: 4826px;
+
+background: #FFFFFF;
+border: 1px solid #000000;
+
+
+/* Header */
+
+position: absolute;
+width: 1280px;
+height: 558px;
+left: 0px;
+top: 0px;
+
+
+
+/* slide3 */
+
+position: absolute;
+width: 2000px;
+height: 2500px;
+left: -487px;
+top: -991px;
+
+background: url(slide3.jpg);
+
+
+/* Frame 36 */
+
+position: absolute;
+width: 1119px;
+height: 40px;
+left: 38px;
+top: 4px;
+
+
+
+/* HiddenSafari */
+
+position: absolute;
+width: 217px;
+height: 40px;
+left: 0px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 34px;
+line-height: 41px;
+
+color: #FFFFFF;
+
+
+
+/* Frame 2 */
+
+position: absolute;
+width: 90px;
+height: 23px;
+left: 526px;
+top: 14px;
+
+
+
+/* Home */
+
+position: absolute;
+width: 69px;
+height: 23px;
+left: 21px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 82.22%;
+top: 17.39%;
+bottom: 13.04%;
+
+background: #FFFFFF;
+
+
+/* Frame 3 */
+
+position: absolute;
+width: 90px;
+height: 23px;
+left: 653px;
+top: 14px;
+
+
+
+/* Events */
+
+position: absolute;
+width: 69px;
+height: 23px;
+left: 25px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 77.78%;
+top: 21.74%;
+bottom: 17.44%;
+
+background: #FFFFFF;
+
+
+/* Frame 4 */
+
+position: absolute;
+width: 90px;
+height: 23px;
+left: 902px;
+top: 14px;
+
+
+
+/* About */
+
+position: absolute;
+width: 69px;
+height: 23px;
+left: 21px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 82.22%;
+top: 17.39%;
+bottom: 13.04%;
+
+border: 2px solid #FFFFFF;
+
+
+/* Frame 11 */
+
+position: absolute;
+width: 90px;
+height: 23px;
+left: 789px;
+top: 14px;
+
+
+
+/* Team */
+
+position: absolute;
+width: 69px;
+height: 23px;
+left: 21px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 77.78%;
+top: 0%;
+bottom: 13.04%;
+
+background: #FFFFFF;
+
+
+/* Frame 5 */
+
+position: absolute;
+width: 90px;
+height: 23px;
+left: 1029px;
+top: 14px;
+
+
+
+/* Contact */
+
+position: absolute;
+width: 91px;
+height: 23px;
+left: 18px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+
+
+/* Vector */
+
+position: absolute;
+left: -3.33%;
+right: 85.56%;
+top: 17.39%;
+bottom: 13.04%;
+
+background: #FFFFFF;
+
+
+/* tabler:building */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 613px;
+top: 94px;
+
+
+
+/* tdesign:call */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 631px;
+top: 84px;
+
+
+
+/* Experience Nature */
+
+position: absolute;
+width: 310px;
+height: 166px;
+left: 68px;
+top: 218px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 55px;
+line-height: 82px;
+
+color: #FFFFFF;
+
+
+
+/* India's Largest Trekking Organization */
+
+position: absolute;
+width: 381px;
+height: 25px;
+left: 66px;
+top: 448px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+
+color: #FFFFFF;
+
+
+
+/* map:climbing */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 68px;
+top: 500px;
+
+
+
+/* Frame 7 */
+
+position: absolute;
+width: 98px;
+height: 36px;
+left: 68px;
+top: 492px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 75.23%;
+top: 16.67%;
+bottom: 8.33%;
+
+background: #FFFFFF;
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 80px;
+height: 36px;
+left: 29px;
+top: 0px;
+
+
+
+/* 2,11,500+ */
+
+position: absolute;
+width: 57px;
+height: 11px;
+left: 1px;
+top: 5px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+
+/* Participants */
+
+position: absolute;
+width: 79px;
+height: 18px;
+left: 1px;
+top: 18px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 15px;
+
+color: #FDFDFD;
+
+
+
+/* Frame 8 */
+
+position: absolute;
+width: 98px;
+height: 36px;
+left: 198px;
+top: 492px;
+
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 80px;
+height: 36px;
+left: 29px;
+top: 0px;
+
+
+
+/* 2750+ */
+
+position: absolute;
+width: 57px;
+height: 11px;
+left: 1px;
+top: 5px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+
+/* Volunteers */
+
+position: absolute;
+width: 79px;
+height: 18px;
+left: 1px;
+top: 18px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 15px;
+
+color: #FDFDFD;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 73.47%;
+top: 13.89%;
+bottom: 13.89%;
+
+background: #FFFFFF;
+
+
+/* mi:users */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 153px;
+top: 530px;
+
+
+
+/* Frame 9 */
+
+position: absolute;
+width: 98px;
+height: 36px;
+left: 328px;
+top: 492px;
+
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 80px;
+height: 36px;
+left: 29px;
+top: 1px;
+
+
+
+/* 68+ */
+
+position: absolute;
+width: 57px;
+height: 11px;
+left: 1px;
+top: 5px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+
+/* Events */
+
+position: absolute;
+width: 79px;
+height: 18px;
+left: 1px;
+top: 18px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 15px;
+
+color: #FDFDFD;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 73.47%;
+top: 16.67%;
+bottom: 11.11%;
+
+background: #FFFFFF;
+
+
+/* Frame 10 */
+
+position: absolute;
+width: 98px;
+height: 36px;
+left: 458px;
+top: 492px;
+
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 80px;
+height: 36px;
+left: 29px;
+top: 1px;
+
+
+
+/* 11 */
+
+position: absolute;
+width: 57px;
+height: 11px;
+left: 1px;
+top: 5px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+
+/* Years */
+
+position: absolute;
+width: 79px;
+height: 18px;
+left: 1px;
+top: 18px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 15px;
+
+color: #FDFDFD;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 73.47%;
+top: 16.67%;
+bottom: 11.11%;
+
+background: #FFFFFF;
+
+
+/* mingcute:tent-line */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 243px;
+top: 467px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 50.32%;
+right: 46.2%;
+top: 96.43%;
+bottom: 0.78%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 50.32%;
+right: 46.2%;
+top: 96.43%;
+bottom: 0.78%;
+
+
+
+/* mingcute:time-fill */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 202px;
+top: 473px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 50.32%;
+right: 46.2%;
+top: 96.43%;
+bottom: 0.78%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 50.32%;
+right: 46.2%;
+top: 96.43%;
+bottom: 0.78%;
+
+
+
+/* bi:three-dots */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 675px;
+top: 514px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 9.38%;
+right: 9.38%;
+top: 40.62%;
+bottom: 40.62%;
+
+background: #FFFFFF;
+
+
+/* ri:team-fill */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 590px;
+top: 104px;
+
+
+
+/* Snow treks */
+
+position: absolute;
+width: 1159px;
+height: 446px;
+left: 57px;
+top: 1091px;
+overflow-x: scroll;
+
+
+
+/* Snow Treks */
+
+position: absolute;
+width: 281px;
+height: 45px;
+left: 0px;
+top: 17px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(115, 61, 61, 0.87);
+
+
+
+/* Frame 21 */
+
+position: absolute;
+width: 1478px;
+height: 313px;
+left: 0px;
+top: 133px;
+overflow-x: scroll;
+
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 1159px;
+height: 313px;
+left: 0px;
+top: 0px;
+overflow-x: scroll;
+
+
+
+/* Frame 20 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 1240px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* 13a769b */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(13a769b.jpg);
+
+
+/* Manali Winter */
+
+position: absolute;
+width: 206px;
+height: 34px;
+left: calc(50% - 206px/2);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* Frame 14 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 0px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* Downpic.cc-2494071039 */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(Downpic.cc-2494071039.jpg);
+
+
+/* KILIMANJARO */
+
+position: absolute;
+width: 209px;
+height: 45px;
+left: 17px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Kilimanjaro Trek */
+
+position: absolute;
+width: 195px;
+height: 34px;
+left: calc(50% - 195px/2 + 0.5px);
+top: 251px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 36px;
+
+color: #000000;
+
+
+
+/* Frame 16 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 307px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* pexels-collab-media-173741945-15207656 */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(pexels-collab-media-173741945-15207656);
+
+
+/* Mount Kenya Trek */
+
+position: absolute;
+width: 225px;
+height: 34px;
+left: calc(50% - 225px/2 + 0.5px);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 36px;
+
+color: #000000;
+
+
+
+/* MOUNT KENYA */
+
+position: absolute;
+width: 227px;
+height: 45px;
+left: 8px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Frame 17 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 614px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* pexels-toulouse-18331843 */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(pexels-toulouse-18331843);
+
+
+/* Rwenzori Trek */
+
+position: absolute;
+width: 198px;
+height: 34px;
+left: calc(50% - 198px/2);
+top: 247px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* RWENZORI */
+
+position: absolute;
+width: 170px;
+height: 45px;
+left: 36px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Frame 19 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 921px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* pexels-toulouse-3410486 */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(pexels-toulouse-3410486);
+
+
+/* Atlas Trek */
+
+position: absolute;
+width: 137px;
+height: 34px;
+left: calc(50% - 137px/2 + 0.5px);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* ATLAS */
+
+position: absolute;
+width: 94px;
+height: 45px;
+left: 74px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Experience the magic of winter landscapes with our guided snow treks */
+
+position: absolute;
+width: 988px;
+height: 45px;
+left: 0px;
+top: 67px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+
+color: rgba(65, 39, 39, 0.87);
+
+
+
+/* Summer Events */
+
+position: absolute;
+width: 1159px;
+height: 495px;
+left: 57px;
+top: 1571px;
+overflow-x: scroll;
+
+
+
+/* Summer Events */
+
+position: absolute;
+width: 281px;
+height: 45px;
+left: 0px;
+top: 17px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(115, 61, 61, 0.87);
+
+
+
+/* Join our exciting range of summer activities */
+
+position: absolute;
+width: 988px;
+height: 45px;
+left: 0px;
+top: 67px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+
+color: rgba(65, 39, 39, 0.87);
+
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 1159px;
+height: 313px;
+left: 0px;
+top: 153px;
+overflow-x: scroll;
+
+
+
+/* Frame 20 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 1240px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* 44ea36e */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(44ea36e.jpg);
+
+
+/* Kasol Sar Pass */
+
+position: absolute;
+width: 206px;
+height: 34px;
+left: calc(50% - 206px/2);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* Frame 14 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 0px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* field-covered-greenery-surrounded-by-zebras-sunlight-blue-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(field-covered-greenery-surrounded-by-zebras-sunlight-blue-sky);
+
+
+/* KRUGER PARK */
+
+position: absolute;
+width: 206px;
+height: 45px;
+left: 18px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* KRUGER PARK */
+
+position: absolute;
+width: 206px;
+height: 45px;
+left: 18px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Kruger Park */
+
+position: absolute;
+width: 210px;
+height: 34px;
+left: calc(50% - 210px/2);
+top: 245px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 32px;
+text-align: center;
+
+color: #000000;
+
+
+
+/* Frame 16 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 307px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-shot-sandstone-formations-valley-gods-utah-usa */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-shot-sandstone-formations-valley-gods-utah-usa);
+
+
+/* Western Cape */
+
+position: absolute;
+width: 173px;
+height: 34px;
+left: calc(50% - 173px/2 + 0.5px);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 36px;
+
+color: #000000;
+
+
+
+/* WESTERN CAPE */
+
+position: absolute;
+width: 233px;
+height: 45px;
+left: 3px;
+top: 25px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Frame 17 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 614px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* african-elephant-family-walking-savanna */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(african-elephant-family-walking-savanna);
+
+
+/* ADDO PARK */
+
+position: absolute;
+width: 174px;
+height: 45px;
+left: 32px;
+top: 25px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Addo Park */
+
+position: absolute;
+width: 151px;
+height: 34px;
+left: calc(50% - 151px/2 + 0.5px);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* Frame 19 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 921px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* group-wildebeests-walking-away-grass-covered-field-rain */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(group-wildebeests-walking-away-grass-covered-field-rain);
+
+
+/* Masai Mara */
+
+position: absolute;
+width: 174px;
+height: 34px;
+left: calc(50% - 174px/2);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* MASAI MARA */
+
+position: absolute;
+width: 191px;
+height: 45px;
+left: 24px;
+top: 25px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Epic Adventure */
+
+position: absolute;
+width: 1159px;
+height: 478px;
+left: 57px;
+top: 2116px;
+overflow-x: scroll;
+
+
+
+/* Epic Adventure */
+
+position: absolute;
+width: 281px;
+height: 45px;
+left: 0px;
+top: 17px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(115, 61, 61, 0.87);
+
+
+
+/* Frame 21 */
+
+position: absolute;
+width: 1478px;
+height: 313px;
+left: 0px;
+top: 96px;
+overflow-x: scroll;
+
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 1159px;
+height: 313px;
+left: 0px;
+top: 55px;
+overflow-x: scroll;
+
+
+
+/* Frame 20 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 1240px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* 13a769b */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(13a769b.jpg);
+
+
+/* Manali Winter */
+
+position: absolute;
+width: 206px;
+height: 34px;
+left: calc(50% - 206px/2);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* Frame 14 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 0px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* Big-Trip-Image-v3 */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(Big-Trip-Image-v3);
+
+
+/* KILIMANJARO */
+
+position: absolute;
+width: 209px;
+height: 45px;
+left: 17px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Kilimanjaro Trek */
+
+position: absolute;
+width: 183px;
+height: 34px;
+left: calc(50% - 183px/2 + 0.5px);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 32px;
+
+color: #000000;
+
+
+
+/* Frame 16 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 307px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* long-range-shot-elephants-walking-grassy-field-near-trees */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(long-range-shot-elephants-walking-grassy-field-near-trees);
+
+
+/* Hwange Park */
+
+position: absolute;
+width: 166px;
+height: 34px;
+left: calc(50% - 166px/2);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 36px;
+
+color: #000000;
+
+
+
+/* HWANGE PARK */
+
+position: absolute;
+width: 221px;
+height: 45px;
+left: 11px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Frame 17 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 614px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* safari-group-grazing-sunset-africa-generated-by-ai */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(safari-group-grazing-sunset-africa-generated-by-ai);
+
+
+/* Botswana */
+
+position: absolute;
+width: 139px;
+height: 34px;
+left: calc(50% - 139px/2 - 11.5px);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* BOTSWANA */
+
+position: absolute;
+width: 174px;
+height: 45px;
+left: 34px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Push your limits with our most thrilling outdoor challenges. */
+
+position: absolute;
+width: 988px;
+height: 45px;
+left: 0px;
+top: 67px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+
+color: rgba(65, 39, 39, 0.87);
+
+
+
+/* Special Events */
+
+position: absolute;
+width: 1159px;
+height: 486px;
+left: 61px;
+top: 2644px;
+overflow-x: scroll;
+
+
+
+/* Special Events */
+
+position: absolute;
+width: 281px;
+height: 45px;
+left: 0px;
+top: 17px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(115, 61, 61, 0.87);
+
+
+
+/* Frame 21 */
+
+position: absolute;
+width: 1478px;
+height: 313px;
+left: 0px;
+top: 96px;
+overflow-x: scroll;
+
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 1159px;
+height: 313px;
+left: 0px;
+top: 53px;
+overflow-x: scroll;
+
+
+
+/* Frame 20 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 1240px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* 13a769b */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(13a769b.jpg);
+
+
+/* Manali Winter */
+
+position: absolute;
+width: 206px;
+height: 34px;
+left: calc(50% - 206px/2);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* Frame 14 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 0px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(beautiful-scenery-high-rocky-mountains-covered-with-snow-breathtaking-sky);
+
+
+/* man-getting-ready-his-mission */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(man-getting-ready-his-mission);
+
+
+/* HUNTING */
+
+position: absolute;
+width: 146px;
+height: 45px;
+left: 48px;
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Hunting */
+
+position: absolute;
+width: 105px;
+height: 34px;
+left: calc(50% - 105px/2 + 0.5px);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 36px;
+
+color: #000000;
+
+
+
+/* Frame 16 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 238px;
+height: 313px;
+left: 307px;
+top: 0px;
+
+border: 1px solid #000000;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+
+
+/* side-view-woman-climbing-rock-ocean */
+
+position: absolute;
+width: 238px;
+height: 239px;
+left: 0px;
+top: -9px;
+
+background: url(side-view-woman-climbing-rock-ocean);
+
+
+/* Training Camp */
+
+position: absolute;
+width: 174px;
+height: 34px;
+left: calc(50% - 174px/2);
+top: 255px;
+
+font-family: 'Phetsarath';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 36px;
+
+color: #000000;
+
+
+
+/* TRAINING CAMP */
+
+position: absolute;
+width: 150px;
+height: 90px;
+left: calc(50% - 150px/2);
+top: 20px;
+
+font-family: 'Reem Kufi Ink';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Join us for unique, limited-time gatherings that celebrate remarkable occasions */
+
+position: absolute;
+width: 1077px;
+height: 45px;
+left: 0px;
+top: 67px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+
+color: rgba(65, 39, 39, 0.87);
+
+
+
+/* testimonials */
+
+position: absolute;
+width: 1315px;
+height: 624px;
+left: -18px;
+top: 3915px;
+overflow-x: scroll;
+
+
+
+/* Why people ❤️ Invincible */
+
+position: absolute;
+width: 406px;
+height: 45px;
+left: 85px;
+top: 23px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(115, 61, 61, 0.87);
+
+
+
+/* Frame 23 */
+
+position: absolute;
+width: 547px;
+height: 429px;
+left: 50px;
+top: 180px;
+
+
+
+/* mdi:youtube */
+
+position: absolute;
+width: 100px;
+height: 100px;
+left: 224px;
+top: 134px;
+
+
+
+/* Frame 27 */
+
+position: absolute;
+width: 519px;
+height: 134px;
+left: 28px;
+top: 0px;
+
+background: rgba(246, 239, 239, 0.71);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* Frame 28 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 21px;
+top: 29px;
+
+border: 1px solid rgba(0, 0, 0, 0.15);
+border-radius: 100px;
+
+
+/* young-bearded-man-with-striped-shirt */
+
+position: absolute;
+width: 70.41px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: url(young-bearded-man-with-striped-shirt);
+
+
+/* Milton Austin */
+
+position: absolute;
+width: 296px;
+height: 39px;
+left: 129px;
+top: 34px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+
+color: #000000;
+
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 234px;
+top: 80px;
+
+
+
+/* Frame 30 */
+
+position: absolute;
+width: 642px;
+height: 408px;
+left: 518px;
+top: 0px;
+
+background: #FFFFFF;
+
+
+/* Sales Manager,ABC */
+
+position: absolute;
+width: 209px;
+height: 15px;
+left: 132px;
+top: 80px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+
+color: rgba(0, 0, 0, 0.48);
+
+
+
+/* Frame 28 */
+
+position: absolute;
+width: 519px;
+height: 134px;
+left: 28px;
+top: 134px;
+
+background: rgba(230, 219, 219, 0.69);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+
+
+/* Frame 28 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 21px;
+top: 29px;
+
+border: 1px solid rgba(0, 0, 0, 0.15);
+border-radius: 100px;
+
+
+/* portrait-expressive-young-woman */
+
+position: absolute;
+width: 70.41px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: url(portrait-expressive-young-woman);
+
+
+/* Annie */
+
+position: absolute;
+width: 296px;
+height: 39px;
+left: 129px;
+top: 34px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+
+color: #000000;
+
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 129px;
+top: 80px;
+
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 269px;
+top: 80px;
+
+
+
+/* Head of Sales ,ABC */
+
+position: absolute;
+width: 288px;
+height: 15px;
+left: 132px;
+top: 80px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+
+color: rgba(0, 0, 0, 0.48);
+
+
+
+/* Frame 29 */
+
+position: absolute;
+width: 519px;
+height: 134px;
+left: 28px;
+top: 268px;
+
+background: rgba(230, 219, 219, 0.69);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.17);
+
+
+/* Frame 28 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 21px;
+top: 29px;
+
+border: 1px solid rgba(0, 0, 0, 0.15);
+border-radius: 100px;
+
+
+/* portrait-caucasian-woman-smiling */
+
+position: absolute;
+width: 70.41px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: url(portrait-caucasian-woman-smiling);
+
+
+/* Sandra */
+
+position: absolute;
+width: 296px;
+height: 39px;
+left: 129px;
+top: 34px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+
+color: #000000;
+
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 129px;
+top: 80px;
+
+
+
+/* Head of Sales ,ABC */
+
+position: absolute;
+width: 288px;
+height: 15px;
+left: 132px;
+top: 80px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+
+color: rgba(0, 0, 0, 0.48);
+
+
+
+/* Experience the best with us */
+
+position: absolute;
+width: 409px;
+height: 45px;
+left: 85px;
+top: 73px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* This trekking organization is excellent. Their costs are minimal due to their NGO's non-profit efforts. You can have the experience of trekking at the lowest cost with basic amenities and the best available trek leaders. The best part is the food they provide during the trek. Their cooks are the best I have experienced so far with different organizations. The food they serve is healthy and a balan. */
+
+position: absolute;
+width: 569px;
+height: 358px;
+left: 625px;
+top: 224px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 23px;
+line-height: 34px;
+
+color: #000000;
+
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 620.5px;
+top: 173.5px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.5%;
+
+background: #DDD31A;
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 655.5px;
+top: 173.5px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.5%;
+
+background: #DDD31A;
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 690.5px;
+top: 173.5px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.5%;
+
+background: #DDD31A;
+
+
+/* material-symbols:star */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 760.5px;
+top: 173.5px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.5%;
+
+background: #DDD31A;
+
+
+/* Vector */
+
+position: absolute;
+left: 55.36%;
+right: 42.74%;
+top: 28.37%;
+bottom: 67.83%;
+
+background: #DDD31A;
+
+
+/* weui:arrow-outlined */
+
+position: absolute;
+width: 55px;
+height: 110px;
+left: 370px;
+top: 4511px;
+
+transform: rotate(90deg);
+
+
+/* Vector */
+
+position: absolute;
+left: 45.92%;
+right: -5.37%;
+top: 39.94%;
+bottom: 6.02%;
+
+background: #D2E7DC;
+transform: rotate(-90deg);
+
+
+/* Frame 22 */
+
+position: absolute;
+width: 1159px;
+height: 426px;
+left: 66px;
+top: 665px;
+
+
+
+/* Recommended camps by our Instructors */
+
+position: absolute;
+width: 536px;
+height: 45px;
+left: -9px;
+top: 5px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+
+color: rgba(65, 39, 39, 0.87);
+
+
+
+/* Highlighted Events */
+
+position: absolute;
+width: 281px;
+height: 45px;
+left: -9px;
+top: -45px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(115, 61, 61, 0.87);
+
+
+
+/* Frame 11 */
+
+position: absolute;
+width: 331px;
+height: 360px;
+left: 0px;
+top: 66px;
+
+border-radius: 10px;
+
+
+/* pexels-limonovdigital-8768454 */
+
+position: absolute;
+width: 559px;
+height: 372px;
+left: -66px;
+top: -13px;
+
+background: url(pexels-limonovdigital-8768454);
+
+
+/* Kilimanjaro */
+
+position: absolute;
+width: 191px;
+height: 55px;
+left: calc(50% - 191px/2);
+top: 206px;
+
+font-family: 'Style Script';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 76px;
+
+color: #FFFFFF;
+
+
+
+/* Frame 12 */
+
+position: absolute;
+width: 192px;
+height: 25px;
+left: calc(50% - 192px/2 + 0.5px);
+top: 316px;
+
+
+
+/* mdi:bus */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 0px;
+top: 1px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 8.33%;
+bottom: 12.5%;
+
+background: #FFFFFF;
+
+
+/* ion:restaurant */
+
+position: absolute;
+width: 18px;
+height: 18px;
+left: 45px;
+top: 4px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 4.49%;
+right: 3.12%;
+top: 3.12%;
+bottom: 3.15%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 3.14%;
+right: 55.79%;
+top: 61.24%;
+bottom: 3.13%;
+
+background: #FFFFFF;
+
+
+/* fa6-solid:tents */
+
+position: absolute;
+width: 22.5px;
+height: 18px;
+left: 82px;
+top: 4px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: -0.01%;
+right: 0.01%;
+top: 0.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* ic:baseline-nordic-walking */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 124px;
+top: 0px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 20.83%;
+top: 6.25%;
+bottom: 4.17%;
+
+background: #FFFFFF;
+
+
+/* mdi:medical-bag */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 167px;
+top: 0px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.28%;
+right: 8.28%;
+top: 12.5%;
+bottom: 12.5%;
+
+background: #FFFFFF;
+
+
+/* Frame 12 */
+
+position: absolute;
+width: 331px;
+height: 360px;
+left: 414px;
+top: 66px;
+
+border-radius: 10px;
+
+
+/* pexels-reyyan-505450018-30891641 */
+
+position: absolute;
+width: 538.43px;
+height: 359px;
+left: -104px;
+top: 0px;
+
+background: url(pexels-reyyan-505450018-30891641);
+
+
+/* Madagascar */
+
+position: absolute;
+width: 229px;
+height: 55px;
+left: calc(50% - 229px/2);
+top: 206px;
+
+font-family: 'Style Script';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 76px;
+
+color: #FFFFFF;
+
+
+
+/* Frame 12 */
+
+position: absolute;
+width: 192px;
+height: 25px;
+left: calc(50% - 192px/2 + 0.5px);
+top: 316px;
+
+
+
+/* mdi:bus */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 0px;
+top: 1px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 8.33%;
+bottom: 12.5%;
+
+background: #FFFFFF;
+
+
+/* ion:restaurant */
+
+position: absolute;
+width: 18px;
+height: 18px;
+left: 45px;
+top: 4px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 4.49%;
+right: 3.12%;
+top: 3.12%;
+bottom: 3.15%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 3.14%;
+right: 55.79%;
+top: 61.24%;
+bottom: 3.13%;
+
+background: #FFFFFF;
+
+
+/* fa6-solid:tents */
+
+position: absolute;
+width: 22.5px;
+height: 18px;
+left: 82px;
+top: 4px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: -0.01%;
+right: 0.01%;
+top: 0.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* ic:baseline-nordic-walking */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 124px;
+top: 0px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 20.83%;
+top: 6.25%;
+bottom: 4.17%;
+
+background: #FFFFFF;
+
+
+/* mdi:medical-bag */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 167px;
+top: 0px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.28%;
+right: 8.28%;
+top: 12.5%;
+bottom: 12.5%;
+
+background: #FFFFFF;
+
+
+/* Frame 13 */
+
+position: absolute;
+width: 331px;
+height: 360px;
+left: 828px;
+top: 65px;
+
+border-radius: 10px;
+
+
+/* pexels-taryn-elliott-4253928 */
+
+position: absolute;
+width: 538.43px;
+height: 359px;
+left: -104px;
+top: 0px;
+
+background: url(pexels-taryn-elliott-4253928);
+
+
+/* Cape Town */
+
+position: absolute;
+width: 198px;
+height: 55px;
+left: calc(50% - 198px/2 + 0.5px);
+top: 209px;
+
+font-family: 'Style Script';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 76px;
+
+color: #FFFFFF;
+
+
+
+/* Frame 12 */
+
+position: absolute;
+width: 192px;
+height: 25px;
+left: calc(50% - 192px/2 + 0.5px);
+top: 316px;
+
+
+
+/* mdi:bus */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 0px;
+top: 1px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 8.33%;
+bottom: 12.5%;
+
+background: #FFFFFF;
+
+
+/* ion:restaurant */
+
+position: absolute;
+width: 18px;
+height: 18px;
+left: 45px;
+top: 4px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 4.49%;
+right: 3.12%;
+top: 3.12%;
+bottom: 3.15%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 3.14%;
+right: 55.79%;
+top: 61.24%;
+bottom: 3.13%;
+
+background: #FFFFFF;
+
+
+/* fa6-solid:tents */
+
+position: absolute;
+width: 22.5px;
+height: 18px;
+left: 82px;
+top: 4px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: -0.01%;
+right: 0.01%;
+top: 0.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* ic:baseline-nordic-walking */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 124px;
+top: 0px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 20.83%;
+top: 6.25%;
+bottom: 4.17%;
+
+background: #FFFFFF;
+
+
+/* mdi:medical-bag */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 167px;
+top: 0px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.28%;
+right: 8.28%;
+top: 12.5%;
+bottom: 12.5%;
+
+background: #FFFFFF;
+
+
+/* weui:arrow-outlined */
+
+position: absolute;
+width: 55px;
+height: 110px;
+left: 1225px;
+top: 841px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 79.88%;
+right: -39.33%;
+top: 77.04%;
+bottom: -31.08%;
+
+background: #D2E7DC;
+transform: rotate(-180deg);
+
+
+/* weui:arrow-outlined */
+
+position: absolute;
+width: 55px;
+height: 110px;
+left: 1225px;
+top: 1335px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 79.88%;
+right: -39.33%;
+top: 77.04%;
+bottom: -31.08%;
+
+background: #D2E7DC;
+transform: rotate(-180deg);
+
+
+/* weui:arrow-outlined */
+
+position: absolute;
+width: 55px;
+height: 110px;
+left: 1220px;
+top: 1789px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 79.88%;
+right: -39.33%;
+top: 77.04%;
+bottom: -31.08%;
+
+background: #D2E7DC;
+transform: rotate(-180deg);
+
+
+/* Footer */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 1280px;
+height: 244px;
+left: 0px;
+top: 4582px;
+
+background: #CCB2B2;
+border: 1px solid #000000;
+
+
+/* HiddenSafari */
+
+position: absolute;
+width: 223px;
+height: 40px;
+left: calc(50% - 223px/2 + 0.5px);
+top: 27px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 34px;
+line-height: 41px;
+
+color: #000000;
+
+
+
+/* Frame 33 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 274px;
+height: 40px;
+left: 65px;
+top: 160px;
+
+border: 1px solid rgba(0, 0, 0, 0.36);
+border-radius: 10px;
+
+
+/* Frame 34 */
+
+position: absolute;
+width: 43px;
+height: 39px;
+left: 231px;
+top: 1px;
+
+background: #B1A0A0;
+border-radius: 10px;
+
+
+/* material-symbols:search */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 7px;
+top: 8px;
+
+
+
+/* Vector */
+
+position: absolute;
+width: 18px;
+height: 18px;
+left: calc(50% - 18px/2);
+top: calc(50% - 18px/2);
+
+background: #000000;
+
+
+/* Enter your Email */
+
+position: absolute;
+width: 211px;
+height: 22px;
+left: 11px;
+top: calc(50% - 22px/2);
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* skill-icons:linkedin */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 1006px;
+top: 168px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: -4%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 4%;
+bottom: -4%;
+
+background: #0A66C2;
+
+
+/* Vector */
+
+position: absolute;
+left: 14.84%;
+right: 14.84%;
+top: 14.84%;
+bottom: 14.97%;
+
+background: #FFFFFF;
+
+
+/* logos:facebook */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 1041px;
+top: 169px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0.61%;
+
+background: #1877F2;
+
+
+/* Vector */
+
+position: absolute;
+left: 29.49%;
+right: 27.73%;
+top: 19.53%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* fa6-brands:square-threads */
+
+position: absolute;
+width: 25.38px;
+height: 29px;
+left: 1078px;
+top: 168px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 6.25%;
+bottom: 6.25%;
+
+background: #000000;
+
+
+/* logos:youtube-icon */
+
+position: absolute;
+width: 35.56px;
+height: 25px;
+left: 1115px;
+top: 170px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0.4%;
+
+background: #FF0000;
+
+
+/* Vector */
+
+position: absolute;
+left: 40.01%;
+right: 34.08%;
+top: 28.46%;
+bottom: 28.86%;
+
+background: #FFFFFF;
+
+
+/* Frame 90 */
+
+position: absolute;
+width: 665px;
+height: 22px;
+left: 403px;
+top: 84px;
+
+
+
+/* Teams */
+
+position: absolute;
+width: 60px;
+height: 21px;
+left: 0px;
+top: 1px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+
+color: #000000;
+
+
+
+/* About */
+
+position: absolute;
+width: 61px;
+height: 21px;
+left: 106px;
+top: 1px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+
+color: #000000;
+
+
+
+/* Events */
+
+position: absolute;
+width: 70px;
+height: 21px;
+left: 213px;
+top: 1px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+
+color: #000000;
+
+
+
+/* Contact US */
+
+position: absolute;
+width: 113px;
+height: 21px;
+left: 329px;
+top: 1px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+
+color: #000000;
+
+
+
+/* Terms and Condition */
+
+position: absolute;
+width: 177px;
+height: 22px;
+left: 488px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* experience yourself */
+
+position: absolute;
+width: 1278px;
+height: 624px;
+left: 0px;
+top: 3180px;
+overflow-x: scroll;
+
+background: #ECD1D1;
+
+
+/* Experience yourself */
+
+position: absolute;
+width: 406px;
+height: 45px;
+left: 62px;
+top: 23px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(115, 61, 61, 0.87);
+
+
+
+/* Exclusive footage from our camps */
+
+position: absolute;
+width: 514px;
+height: 45px;
+left: 62px;
+top: 73px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Frame 26 */
+
+position: absolute;
+width: 1731px;
+height: 368px;
+left: 60px;
+top: 174px;
+overflow-x: scroll;
+
+
+
+/* Frame 23 */
+
+position: absolute;
+width: 547px;
+height: 368px;
+left: 0px;
+top: 0px;
+
+
+
+/* beautiful-woman-with-backpack-smiling */
+
+position: absolute;
+width: 547.4px;
+height: 368px;
+left: 0px;
+top: 0px;
+
+background: url(beautiful-woman-with-backpack-smiling);
+border-radius: 10px;
+
+
+/* mdi:youtube */
+
+position: absolute;
+width: 100px;
+height: 100px;
+left: 224px;
+top: 134px;
+
+
+
+/* Vector */
+
+position: absolute;
+width: 83.33px;
+height: 58.33px;
+left: calc(50% - 83.33px/2 - 0.33px);
+top: calc(50% - 58.33px/2 + 0.17px);
+
+background: #E82626;
+
+
+/* Frame 24 */
+
+position: absolute;
+width: 547px;
+height: 368px;
+left: 592px;
+top: 0px;
+
+
+
+/* mother-with-cute-son-winter-oark 1 */
+
+position: absolute;
+width: 547.4px;
+height: 368px;
+left: 0px;
+top: 0px;
+
+background: url(mother-with-cute-son-winter-oark);
+border-radius: 10px;
+
+
+/* woman-with-man-photographing-while-traveling-vehicle */
+
+position: absolute;
+width: 547.4px;
+height: 368px;
+left: 0px;
+top: 0px;
+
+background: url(woman-with-man-photographing-while-traveling-vehicle);
+border-radius: 10px;
+
+
+/* mdi:youtube */
+
+position: absolute;
+width: 100px;
+height: 100px;
+left: 224px;
+top: 134px;
+
+
+
+/* Vector */
+
+position: absolute;
+width: 83.33px;
+height: 58.33px;
+left: calc(50% - 83.33px/2 - 0.33px);
+top: calc(50% - 58.33px/2 + 0.17px);
+
+background: #E82626;
+
+
+/* Frame 25 */
+
+position: absolute;
+width: 547px;
+height: 368px;
+left: 1184px;
+top: 0px;
+
+
+
+/* indian-men-resting-by-bonfire-with-their-camel */
+
+position: absolute;
+width: 547.4px;
+height: 368px;
+left: 0px;
+top: 0px;
+
+background: url(indian-men-resting-by-bonfire-with-their-camel);
+border-radius: 10px;
+
+
+/* mdi:youtube */
+
+position: absolute;
+width: 100px;
+height: 100px;
+left: 224px;
+top: 134px;
+
+
+
+/* Vector */
+
+position: absolute;
+width: 83.33px;
+height: 58.33px;
+left: calc(50% - 83.33px/2 - 0.33px);
+top: calc(50% - 58.33px/2 + 0.17px);
+
+background: #E82626;
