@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="font-sans text-black">
+    <div className="font-sans text-black overflow-hidden w-full">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

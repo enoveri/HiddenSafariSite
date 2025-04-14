@@ -36,7 +36,10 @@ const HighlightedEvents = () => {
   };
 
   return (
-    <section className="py-16 px-4 max-w-7xl mx-auto" id="highlighted-events">
+    <section
+      className="py-16 px-4 max-w-7xl mx-auto overflow-hidden"
+      id="highlighted-events"
+    >
       {/* Section heading area with improved spacing */}
       <div className="mb-10">
         <h2 className="text-4xl font-poppins font-semibold text-[#7d4744] mb-3">
@@ -89,7 +92,7 @@ const HighlightedEvents = () => {
           "
             aria-label="View more events"
           >
-            <FontAwesomeIcon icon={faChevronRight} className="text-7xl" />
+            <FontAwesomeIcon icon={faChevronRight} className="text-5xl" />
           </span>
         )}
       </div>

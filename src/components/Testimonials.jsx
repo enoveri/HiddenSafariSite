@@ -1,9 +1,11 @@
 // src/components/Testimonials.jsx
 import React, { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa"; // or use your existing star icons
+import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Added half star for partial ratings
+import { FaRegStar } from "react-icons/fa"; // Empty star for ratings
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
 
   useEffect(() => {
     fetch("http://54.210.95.246:3005/api/v1/info/testimonials", {
@@ -25,9 +27,43 @@ const Testimonials = () => {
     return <div className="p-8">Loading testimonials...</div>;
   }
 
-  // Display up to 3 stacked authors on the left and use the first testimonial's quote on the right
-  const leftSideTestimonials = testimonials.slice(0, 3);
-  const mainTestimonial = testimonials[0];
+  // Display up to 5 stacked authors on the left and use the selected testimonial on the right
+  const leftSideTestimonials = testimonials.slice(0, 5);
+  const activeTestimonial = testimonials[activeTestimonialIndex];
+
+  // Function to render star ratings based on the rating value
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    // Add full stars
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(
+        <FaStar key={`full-${i}`} className="text-yellow-400 w-6 h-6 mr-1" />
+      );
+    }
+
+    // Add half star if needed
+    if (hasHalfStar) {
+      stars.push(
+        <FaStarHalfAlt key="half" className="text-yellow-400 w-6 h-6 mr-1" />
+      );
+    }
+
+    // Add empty stars
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(
+        <FaRegStar
+          key={`empty-${i}`}
+          className="text-yellow-400 w-6 h-6 mr-1"
+        />
+      );
+    }
+
+    return stars;
+  };
 
   return (
     <section
@@ -44,11 +80,16 @@ const Testimonials = () => {
 
       <div className="flex flex-col md:flex-row md:space-x-8">
         {/* Left column: stacked list of authors */}
-        <div className="md:w-[35%] space-y-4 mb-8 md:mb-0">
+        <div className="md:w-[35%] gap-y-3 mb-8 md:mb-0">
           {leftSideTestimonials.map((t, idx) => (
             <div
               key={t.id || idx}
-              className="flex items-center bg-white shadow-md rounded p-4"
+              className={`flex items-center shadow-md rounded p-6 cursor-pointer transition-all duration-300 ${
+                activeTestimonialIndex === idx
+                  ? "bg-[#fff]"
+                  : "bg-[#e8dede] hover:bg-gray-50"
+              }`}
+              onClick={() => setActiveTestimonialIndex(idx)}
             >
               <img
                 src={t.profileImage}
@@ -64,17 +105,28 @@ const Testimonials = () => {
         </div>
 
         {/* Right column: star rating + main quote */}
-        <div className="md:w-[65%] bg-white p-6 shadow-md rounded relative">
-          {/* Star rating (assuming 5-star) */}
+        <div className="md:w-[65%] bg-white p-8 shadow-md rounded relative">
+          {/* Star rating */}
           <div className="flex mb-4">
-            {[...Array(5)].map((_, index) => (
-              <FaStar key={index} className="text-yellow-400 w-6 h-6 mr-1" />
-            ))}
+            {renderStars(activeTestimonial.ratings || 5)}
           </div>
-          {/* Main quote from the first testimonial */}
-          <p className="text-base md:text-lg font-poppins text-black leading-relaxed">
-            {mainTestimonial.quote}
+          {/* Main quote from the selected testimonial */}
+          <p className="text-xl md:text-2xl font-poppins text-black leading-relaxed italic mb-6">
+            "{activeTestimonial.review}"
           </p>
+
+          {/* Author information */}
+          <div className="flex items-center mt-4">
+            <img
+              src={activeTestimonial.profileImage}
+              alt={activeTestimonial.name}
+              className="w-12 h-12 rounded-full object-cover mr-3"
+            />
+            <div>
+              <p className="font-semibold">{activeTestimonial.name}</p>
+              <p className="text-gray-600 text-sm">{activeTestimonial.role}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
