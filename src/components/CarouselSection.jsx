@@ -1,10 +1,12 @@
 // src/components/CarouselSection.jsx
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [imageFallbacks, setImageFallbacks] = useState({});
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -34,84 +36,109 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
     fetchEvents();
   }, [apiEndpoint]);
 
+  // Handle image loading error by trying next banner
+  const handleImageError = (eventId, currentBanner) => {
+    const currentFallback = imageFallbacks[eventId] || 0;
+    const nextFallback = currentFallback + 1;
+
+    if (nextFallback <= 2) {
+      // We have bannerImages1, 2, and 3
+      setImageFallbacks({
+        ...imageFallbacks,
+        [eventId]: nextFallback,
+      });
+    }
+  };
+
+  // Get the current banner image URL to display
+  const getBannerImageUrl = (event) => {
+    const fallbackLevel = imageFallbacks[event.id] || 0;
+
+    switch (fallbackLevel) {
+      case 0:
+        return event.bannerImages1;
+      case 1:
+        return event.bannerImages2;
+      case 2:
+        return event.bannerImages3;
+      default:
+        return "https://placehold.co/238x239/gray/white?text=Image+Unavailable";
+    }
+  };
+
   if (loading) {
-    return <div className="py-12 px-8">Loading...</div>;
+    return <div className="py-16 px-4 max-w-7xl mx-auto">Loading...</div>;
   }
 
   if (error) {
     return (
-      <div className="py-12 px-8 text-red-500">Error: {error.message}</div>
+      <div className="py-16 px-4 max-w-7xl mx-auto text-red-500">
+        Error: {error.message}
+      </div>
     );
   }
 
   return (
-    <section className="py-12 px-8">
-      <h2 className="text-3xl font-poppins font-medium text-maroon mb-4">
-        {title}
-      </h2>
-      <p className="mb-8 text-lg text-darkBrown">{subTitle}</p>
+    <section className="py-16 px-4 max-w-7xl mx-auto">
+      {/* Section header */}
+      <div className="mb-8">
+        <h2 className="text-3xl font-poppins font-medium text-[#733d3dde] mb-2">
+          {title}
+        </h2>
+        <p className="text-2xl text-[#412727de] font-poppins font-medium mb-12">
+          {subTitle}
+        </p>
+      </div>
 
-      {/* Scrollable row of cards with spacing - scrollbar hidden */}
-      <div
-        className="flex gap-4 overflow-x-auto scrollbar-hide"
-        style={{
-          scrollbarWidth: "none" /* Firefox */,
-          msOverflowStyle: "none" /* IE and Edge */,
-          WebkitOverflowScrolling: "touch",
-        }}
-      >
-        <style jsx>{`
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-        `}</style>
-        {events.map((event) => (
-          <div
-            key={event.id}
-            className="
-              relative
-              min-w-[238px]
-              h-[313px]
-              shrink-0
-              border
-              border-black
-              rounded-lg
-              shadow-md
-              overflow-hidden
-            "
-          >
-            {/* Top portion: image plus an overlaid heading */}
-            <div className="relative w-full h-[239px]">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${event.bannerImages1})` }}
-              ></div>
-              {/* Optional top text overlay (uppercase or calligraphic) */}
-              <h4
-                className="
-                  absolute
-                  top-3
-                  left-3
-                  text-white
-                  text-xl
-                  font-bold
-                  drop-shadow
-                  uppercase
-                "
-              >
-                {event.title || "Untitled"}
-              </h4>
-            </div>
+      {/* Card row exactly as in the image */}
+      <div className="flex overflow-x-auto gap-24 pb-6 hide-scrollbar">
+        {events.slice(0, 4).map((event) => (
+          <div key={event.id} className="flex-shrink-0 ">
+            <Link
+              to={`/${category}/${event.id}`}
+              className="block w-[225px] h-[350px] rounded-lg overflow-hidden shadow-lg"
+            >
+              {/* Image container */}
+              <div className="relative h-full">
+                <img
+                  src={getBannerImageUrl(event)}
+                  alt={event.heading}
+                  className="w-full h-full object-cover"
+                  onError={() =>
+                    handleImageError(event.id, imageFallbacks[event.id] || 0)
+                  }
+                />
+                {/* Location name overlay - centered in image */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-white text-xl font-bold uppercase tracking-wide text-center px-2 text-shadow-sm">
+                    {event.heading}
+                  </h3>
+                </div>
+              </div>
 
-            {/* Bottom portion: smaller heading */}
-            <div className="p-4">
-              <h3 className="text-xl font-phetsarath text-center">
-                {event.heading}
-              </h3>
-            </div>
+              {/* Trek text inside the card */}
+              <div className="bg-white justify-self-end py-3 text-center z-10">
+                <p className="text-black text-base font-medium">
+                  {event.heading} Trek
+                </p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
+
+      <style jsx="true">{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .text-shadow-sm {
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+      `}</style>
     </section>
   );
 };

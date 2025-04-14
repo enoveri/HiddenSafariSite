@@ -36,56 +36,61 @@ const HighlightedEvents = () => {
   };
 
   return (
-    <section className="flex flex-col py-12 px-8" id="highlighted-events">
-      <h2 className="text-3xl font-poppins font-medium text-maroon mb-4 text-center">
-        Highlighted Events
-      </h2>
-      <p className="mb-8 text-lg text-darkBrown text-center">
-        Recommended camps by our Instructors
-      </p>
+    <section className="py-16 px-4 max-w-7xl mx-auto" id="highlighted-events">
+      {/* Section heading area with improved spacing */}
+      <div className="mb-10">
+        <h2 className="text-4xl font-poppins font-semibold text-[#7d4744] mb-3">
+          Highlighted Events
+        </h2>
+        <p className="text-xl text-[#5a4a42]">
+          Recommended camps by our Instructors
+        </p>
+      </div>
 
-      {/* Outer container for arrow-based scroll - centered with mx-auto */}
-      <div className="relative mx-auto ">
-        {/* Card list with centering */}
+      {/* Container with cards and button in a row */}
+      <div className="flex flex-row items-center justify-center">
+        {/* Card list */}
         <div
           ref={scrollContainerRef}
           className="
             flex
             flex-row
             justify-center
-            gap-4
+            gap-32
             transition-all
             duration-300
+            overflow-hidden
           "
         >
           {visibleEvents.map((event, idx) => (
-            // Each card is "shrink-0" so it won't compress or overlap
             <div className="shrink-0" key={`${event.id}-${idx}`}>
               <HighlightedEventCard event={event} />
             </div>
           ))}
         </div>
 
-        {/* Right arrow button to scroll */}
+        {/* Simple white chevron with no background box */}
         {events.length > 3 && (
-          <button
+          <span
             onClick={handleScrollRight}
             className="
-              absolute
-              top-1/2
-              right-0
-              -translate-y-1/2
-             
-              p-3
-              rounded-full
-              text-5xl
-              text-white
-             
-              shadow-md
-            "
+            ml-8
+            w-12
+            h-12
+            flex
+            bg-transparent
+            items-center
+            justify-center
+            text-white
+            hover:text-gray-200
+            flex-shrink-0
+            transition-colors
+            focus:outline-none
+          "
+            aria-label="View more events"
           >
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
+            <FontAwesomeIcon icon={faChevronRight} className="text-7xl" />
+          </span>
         )}
       </div>
     </section>
