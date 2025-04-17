@@ -18,6 +18,15 @@ import {
 
 // IntroSection: includes booking card, icons, etc.
 const IntroSection = ({ event }) => {
+   const amenities = [
+     { icon: FaUtensils, label: "Food" },
+     { icon: FaHotel, label: "Accommodation" },
+     { icon: FaCar, label: "Traveling" },
+     { icon: FaFirstAid, label: "First Aid" },
+     { icon: FaBoxOpen, label: "Accessories" },
+     { icon: FaChalkboardTeacher, label: "Instructor" },
+   ];
+        
   return (
     <section className="relative max-w-7xl px-8 py-8 flex justify-center gap-8">
       {/* LEFT SIDE: Event info */}
@@ -78,43 +87,20 @@ const IntroSection = ({ event }) => {
         </p>
 
         {/* Icon list matching the left side */}
+         
+       
         <div className="grid grid-cols-2 gap-y-8 gap-x-10 text-gray-800">
-          <div className="flex items-center space-x-4">
-            <div className="p-6 bg-[#E1C2C2A1] rounded-full border border-[#E1C2C2A1] flex items-center justify-center">
-              <FaUtensils className="text-2xl text-[#E25B32]" />
-            </div>
-            <span className="text-base">Food</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="p-6 bg-[#E1C2C2A1] rounded-full border border-[#E1C2C2A1] flex items-center justify-center">
-              <FaHotel className="text-2xl text-[#E25B32]" />
-            </div>
-            <span className="text-base">Accommodation</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="p-6 bg-[#E1C2C2A1] rounded-full border border-[#E1C2C2A1] flex items-center justify-center">
-              <FaCar className="text-2xl text-[#E25B32]" />
-            </div>
-            <span className="text-base">Traveling</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="p-6 bg-[#E1C2C2A1] rounded-full border border-[#E1C2C2A1] flex items-center justify-center">
-              <FaFirstAid className="text-2xl text-[#E25B32]" />
-            </div>
-            <span className="text-base">First Aid</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="p-6 bg-[#E1C2C2A1] rounded-full border border-[#E1C2C2A1] flex items-center justify-center">
-              <FaBoxOpen className="text-2xl text-[#E25B32]" />
-            </div>
-            <span className="text-base">Accessories</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="p-6 bg-[#E1C2C2A1] rounded-full border border-[#E1C2C2A1] flex items-center justify-center">
-              <FaChalkboardTeacher className="text-2xl text-[#E25B32]" />
-            </div>
-            <span className="text-base">Instructor</span>
-          </div>
+          {amenities.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <div key={index} className="flex items-center space-x-4">
+                <div className="p-3 bg-[#E1C2C2A1] rounded-full border border-[#E1C2C2A1] flex items-center justify-center">
+                  <IconComponent className="text-2xl text-[#E25B32]" />
+                </div>
+                <span className="text-base">{item.label}</span>
+              </div>
+            );
+          })}
         </div>
         <div className="flex justify-center">
           <Link
@@ -268,78 +254,93 @@ const EventDetail = () => {
       <IntroSection event={event} />
 
       {/* Dates Card */}
-      <div className="my-8 mx-auto w-full max-w-[1280px] bg-[#F5E4DA] p-6">
+      <div className="my-8  w-full max-w-[1280px] bg-[#F5E4DA] p-6">
         <h2 className="text-2xl font-bold mb-4">Dates</h2>
 
         {/* Months row */}
-        <div className="flex items-center space-x-4 mb-4">
-          <button className="bg-[#E25B32] text-white px-3 py-1 rounded-full">
-            April
-          </button>
-          <button className="border border-black px-3 py-1 rounded-full">
-            May
-          </button>
-          <button className="border border-black px-3 py-1 rounded-full">
-            June
-          </button>
+        <div className="flex items-center space-x-4 mb-4 w-full ml-2.5">
+          {["April", "May", "June"].map((month, index) => (
+            <button
+              key={month}
+              className={`${
+                index === 0 ? "bg-[#E25B32] text-white" : "border border-black"
+              } px-3 py-1 rounded-full`}
+            >
+              {month}
+            </button>
+          ))}
         </div>
 
         {/* Days row */}
         <div className="flex items-center space-x-6">
-          <button className="w-10 h-10 flex items-center justify-center border-2 border-[#E25B32] text-[#E25B32] rounded-full">
-            20
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center border-2 border-black rounded-full">
-            23
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center border-2 border-black rounded-full">
-            27
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center border-2 border-black rounded-full">
-            29
-          </button>
+          {[20, 23, 27, 29].map((day, index) => (
+            <button
+              key={day}
+              className={`w-10 h-10 flex items-center justify-center border-2 ${
+                index === 0 ? "border-[#E25B32] text-[#E25B32]" : "border-black"
+              } rounded-full`}
+            >
+              {day}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Schedule Section — each day’s layout matches your screenshot */}
+            {/* Schedule Section with timeline */}
       <div className="my-8 mx-auto w-full max-w-[1280px] px-8">
         <h2 className="text-2xl font-bold mb-6">Schedule</h2>
-        {event.schedule.map((dayPlan) => (
-          <div key={dayPlan.day} className="md:flex items-start mb-8 last:mb-0">
-            {/* Left column: day, stats, description */}
-            <div className="md:w-3/5 md:pr-4">
-              <h3 className="text-xl font-bold mb-2">Day {dayPlan.day}</h3>
-              {/* Title or route name, e.g. "Londorossi Gate to Forest Camp" */}
-              <p className="font-semibold mb-1">{dayPlan.title}</p>
-              {/* Stats (Elevation, Distance, etc.) — only if your data provides them */}
-              <p className="text-gray-600 mb-1">
-                <strong>Elevation (ft):</strong> {dayPlan.elevation}
-              </p>
-              <p className="text-gray-600 mb-1">
-                <strong>Distance:</strong> {dayPlan.distance}
-              </p>
-              <p className="text-gray-600 mb-1">
-                <strong>Hiking Time:</strong> {dayPlan.hikingTime}
-              </p>
-              <p className="text-gray-600 mb-4">
-                <strong>Habitat:</strong> {dayPlan.habitat}
-              </p>
-              {/* Main paragraph describing that day */}
-              <p className="mb-4">{dayPlan.description || dayPlan.plan}</p>
+        <div className="relative">
+          {/* Timeline vertical line */}
+          <div className="absolute left-[15px] top-2 bottom-0 w-1 bg-[#E25B32] opacity-30"></div>
+          
+          {event.schedule.map((dayPlan) => (
+            <div key={dayPlan.day} className="relative flex mb-12 last:mb-0">
+              {/* Timeline dot */}
+              <div className="absolute left-0 -top-1 h-8 w-8 rounded-full bg-[#E25B32] text-white flex items-center justify-center z-10">
+                
+              </div>
+              
+              {/* Content container with left margin to make space for timeline */}
+              <div className="ml-14 flex flex-col items-start w-full">
+                {/* Left column: day, stats, description */}
+                <div className="md:w-3/5 md:pr-4">
+                  <h3 className="text-xl font-bold mb-2">Day {dayPlan.day}</h3>
+                  <p className="font-semibold mb-1">{dayPlan.plan}</p>
+                  {dayPlan.elevation && (
+                    <p className="text-gray-600 mb-1">
+                      <strong>Elevation (ft):</strong> {dayPlan.elevation}
+                    </p>
+                  )}
+                  {dayPlan.distance && (
+                    <>
+                      <p className="text-gray-600 mb-1">
+                        <strong>Distance:</strong> {dayPlan.distance}
+                      </p>
+                      <p className="text-gray-600 mb-1">
+                        <strong>Hiking Time:</strong> {dayPlan.hikingTime}
+                      </p>
+                      <p className="text-gray-600 mb-4">
+                        <strong>Habitat:</strong> {dayPlan.habitat}
+                      </p>
+                      <p className="mb-4">{dayPlan.description || dayPlan.plan}</p>
+                    </>
+                  )}
+                </div>
+      
+                {/* Right column: image */}
+                <div className=" mt-4 md:mt-0">
+                  <img
+                    src={dayPlan.bannerImage}
+                    alt={`Day ${dayPlan.day} banner`}
+                    className="w-3/5 h-auto rounded-md shadow"
+                  />
+                </div>
+              </div>
             </div>
-
-            {/* Right column: image */}
-            <div className="md:w-2/5 mt-4 md:mt-0">
-              <img
-                src={dayPlan.bannerImage}
-                alt={`Day ${dayPlan.day} banner`}
-                className="w-full h-auto rounded-md shadow"
-              />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+      </div>
   );
 };
 

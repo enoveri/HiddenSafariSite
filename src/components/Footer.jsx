@@ -32,7 +32,7 @@ const Footer = () => {
         {/* Bottom row: Email input + Social Icons */}
         <div className="w-full flex items-center justify-between">
           {/* Email Form */}
-          <form className="relative flex items-center border-1 rounded-2 border-b-gray-700">
+          <form className="relative flex items-center border-1 rounded-3xl border-b-gray-700">
             <input
               type="email"
               placeholder="Enter your Email"
@@ -40,7 +40,7 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className="px-2 h-full rounded-2  bg-gray-700"
+              className="items-center p-3 h-full  rounded-3xl bg-gray-700"
               aria-label="Submit"
             >
               <svg
