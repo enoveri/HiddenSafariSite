@@ -99,8 +99,13 @@ const TermsAndConditions = () => {
   }
 
   return (
-    <div className="min-h-screen container mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-8 text-center">{termsData.title}</h1>
+    <div className="min-h-screen container mx-auto px-4 pt-24 pb-12">
+      {" "}
+      {/* Added padding top to prevent overlap with header */}
+      <h1 className="text-3xl font-bold mb-8 text-center text-[#E25B32]">
+        {termsData.title}
+      </h1>{" "}
+      {/* Changed text color to orange */}
       <div className="prose max-w-none">
         <div className="bg-white rounded-lg shadow-md p-6">
           {sections.map((section, index) => (
@@ -131,7 +136,9 @@ const TermsAndConditions = () => {
         </div>
       </div>
       <div className="mt-8 text-center">
-        <Link to="/" className="text-blue-600 hover:underline font-medium">
+        <Link to="/" className="text-[#E25B32] hover:underline font-medium">
+          {" "}
+          {/* Changed link color to match */}
           Return to home page
         </Link>
       </div>

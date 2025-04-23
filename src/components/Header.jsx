@@ -26,9 +26,13 @@ const Header = () => {
   const [user, setUser] = useState(null);
 
   // Check if current path is one that should have the orange header
-  const isOrangeHeader = ["/events", "/about", "/team", "/contact"].includes(
-    currentPath
-  );
+  const isOrangeHeader = [
+    "/events",
+    "/about",
+    "/team",
+    "/contact",
+    "/terms-and-conditions", // Added Terms and Conditions path
+  ].includes(currentPath);
 
   // Check for existing user session on component mount
   useEffect(() => {
