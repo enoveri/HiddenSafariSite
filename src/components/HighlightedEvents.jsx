@@ -2,100 +2,199 @@
 import React, { useEffect, useState, useRef } from "react";
 import HighlightedEventCard from "./HighlightedEventCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import { api } from "../api";
+import { API_BASE_URL, ENDPOINTS } from "../utils/apiConfig";
 
 const HighlightedEvents = () => {
   const [events, setEvents] = useState([]);
-  const [visibleEvents, setVisibleEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollContainerRef = useRef(null);
+  const carouselRef = useRef(null);
+
+  // Calculate how many cards to show based on screen size
+  const [cardsToShow, setCardsToShow] = useState(3);
 
   useEffect(() => {
-    fetch("http://54.210.95.246:3005/api/v1/events/highlighted-events")
-      .then((res) => res.json())
-      .then((data) => {
-        setEvents(data);
-        // Set initial 3 visible events
-        setVisibleEvents(data.slice(0, 3));
-      })
-      .catch((err) => console.error(err));
+    // Responsive handler to determine cards to show
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setCardsToShow(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsToShow(2);
+      } else {
+        setCardsToShow(3);
+      }
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Scroll by approximately one card's width + gap
+  useEffect(() => {
+    const fetchHighlightedEvents = async () => {
+      setLoading(true);
+      try {
+        const response = await api.get(ENDPOINTS.HIGHLIGHTED_EVENTS);
+        setEvents(response.data);
+      } catch (err) {
+        console.error("Error fetching highlighted events:", err);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHighlightedEvents();
+  }, []);
+
+  const handleScrollLeft = () => {
+    if (events.length <= cardsToShow) return;
+
+    const newIndex = Math.max(0, currentIndex - 1);
+    setCurrentIndex(newIndex);
+    scrollToIndex(newIndex);
+  };
+
   const handleScrollRight = () => {
-    if (events.length <= 3) return;
+    if (events.length <= cardsToShow) return;
 
-    const nextIndex = (currentIndex + 1) % (events.length - 2);
-    setCurrentIndex(nextIndex);
-    setVisibleEvents(events.slice(nextIndex, nextIndex + 3));
+    const maxIndex = Math.max(0, events.length - cardsToShow);
+    const newIndex = Math.min(maxIndex, currentIndex + 1);
+    setCurrentIndex(newIndex);
+    scrollToIndex(newIndex);
+  };
 
-    if (scrollContainerRef.current) {
-      // Smooth scroll effect
-      scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
+  const scrollToIndex = (index) => {
+    if (carouselRef.current) {
+      const cardWidth = carouselRef.current.children[0]?.offsetWidth || 0;
+      const gap = 16; // Gap between cards in pixels
+
+      carouselRef.current.scrollTo({
+        left: index * (cardWidth + gap),
+        behavior: "smooth",
+      });
     }
   };
 
+  if (loading) {
+    return (
+      <section className="py-10 md:py-16 px-4 max-w-7xl mx-auto w-full flex justify-center items-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#7d4744]"></div>
+      </section>
+    );
+  }
+
+  if (error || events.length === 0) {
+    return (
+      <section className="py-10 md:py-16 px-4 max-w-7xl mx-auto">
+        <div className="text-center text-gray-600">
+          {error
+            ? "Error loading highlighted events."
+            : "No highlighted events available."}
+        </div>
+      </section>
+    );
+  }
+
+  const canScrollLeft = currentIndex > 0;
+  const canScrollRight = currentIndex < events.length - cardsToShow;
+
   return (
     <section
-      className="py-16 px-4 max-w-7xl mx-auto overflow-hidden"
+      className="py-10 md:py-16 px-4 max-w-7xl mx-auto w-full"
       id="highlighted-events"
     >
-      {/* Section heading area with improved spacing */}
-      <div className="mb-10">
-        <h2 className="text-4xl font-poppins font-semibold text-[#7d4744] mb-3">
+      {/* Section heading area with improved responsive spacing */}
+      <div className="mb-6 md:mb-10">
+        <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-[#7d4744] mb-2 md:mb-3">
           Highlighted Events
         </h2>
-        <p className="text-xl text-[#5a4a42]">
+        <p className="text-lg md:text-xl text-[#5a4a42]">
           Recommended camps by our Instructors
         </p>
       </div>
 
-      {/* Container with cards and button in a row */}
-      <div className="flex flex-row items-center justify-center">
-        {/* Card list */}
+      {/* Carousel container with navigation arrows */}
+      <div className="relative">
+        {/* Left navigation button */}
+        {canScrollLeft && (
+          <button
+            onClick={handleScrollLeft}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7d4744]"
+            aria-label="View previous events"
+          >
+            <FontAwesomeIcon icon={faChevronLeft} className="text-[#7d4744]" />
+          </button>
+        )}
+
+        {/* Cards container */}
         <div
-          ref={scrollContainerRef}
-          className="
-            flex
-            flex-row
-            justify-center
-            gap-32
-            transition-all
-            duration-300
-            overflow-hidden
-          "
+          ref={carouselRef}
+          className="flex overflow-x-auto gap-4 md:gap-8 pb-6 hide-scrollbar scroll-smooth"
+          style={{
+            scrollbarWidth: "none", // For Firefox
+            msOverflowStyle: "none", // For Internet Explorer and Edge
+          }}
         >
-          {visibleEvents.map((event, idx) => (
-            <div className="shrink-0" key={`${event.id}-${idx}`}>
+          {events.map((event) => (
+            <div
+              key={event.id}
+              className="flex-none transition-transform duration-300 hover:scale-[1.02]"
+            >
               <HighlightedEventCard event={event} />
             </div>
           ))}
         </div>
 
-        {/* Simple white chevron with no background box */}
-        {events.length > 3 && (
-          <span
+        {/* Right navigation button */}
+        {canScrollRight && (
+          <button
             onClick={handleScrollRight}
-            className="
-            ml-8
-            w-12
-            h-12
-            flex
-            bg-transparent
-            items-center
-            justify-center
-            text-white
-            hover:text-gray-200
-            flex-shrink-0
-            transition-colors
-            focus:outline-none
-          "
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7d4744]"
             aria-label="View more events"
           >
-            <FontAwesomeIcon icon={faChevronRight} className="text-5xl" />
-          </span>
+            <FontAwesomeIcon icon={faChevronRight} className="text-[#7d4744]" />
+          </button>
         )}
       </div>
+
+      {/* Pagination indicator dots */}
+      {events.length > cardsToShow && (
+        <div className="flex justify-center mt-6 gap-2">
+          {Array.from({
+            length: Math.ceil(events.length - cardsToShow + 1),
+          }).map((_, i) => (
+            <button
+              key={i}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                i === currentIndex ? "bg-[#7d4744] w-4" : "bg-gray-300"
+              }`}
+              onClick={() => {
+                setCurrentIndex(i);
+                scrollToIndex(i);
+              }}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      <style jsx="true">{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };

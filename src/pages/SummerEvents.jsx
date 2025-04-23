@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { eventService } from "../api";
 
 function SummerEvents() {
   const [events, setEvents] = useState([]);
@@ -11,10 +11,8 @@ function SummerEvents() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(
-          "http://54.210.95.246:3005/api/v1/events/summer-events"
-        );
-        setEvents(response.data);
+        const data = await eventService.getSummerEvents();
+        setEvents(data);
         setLoading(false);
       } catch (err) {
         setError("Failed to load summer events. Please try again later.");

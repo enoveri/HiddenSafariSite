@@ -1,35 +1,51 @@
 // src/components/Testimonials.jsx
 import React, { useEffect, useState } from "react";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Added half star for partial ratings
-import { FaRegStar } from "react-icons/fa"; // Empty star for ratings
+import {
+  FaStar,
+  FaStarHalfAlt,
+  FaQuoteLeft,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
+import { testimonialService } from "../api";
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://54.210.95.246:3005/api/v1/info/testimonials", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjQxMzc2NzgsImV4cCI6MTcyOTMyMTY3OCwiaXNzIjoidXJuOmlzc3VlciJ9.ktWmxeC4NqHv1_W0qKt0avlCaDPBNivvDStv6BwHu9K5Geq9TegxH-S1cPfiRhcGdH30YUg1iDShFNOW7mBSwoKsVMMzWJfaqlN0aG1ELh3m9EL-GepR6gxQ5YkZQ9WfBGeoRDNHyYtq02ajgbRLrueuovCf5Nz9iu-ig0onh9XnZJ7J1kEQF3C6gjB0jLqJ8UcWY72S_O0_6tfq8lFuAXQjYbonMCAsx_hG-wJkmE8hlfcgN6BlcemZq-cTghJVNswBmzSoqgTEW1UnBYVoVOyptFQfVFOjdpRUaAlE4R0JHoRfFLR9vsxxvO5Y_x3Z8Eqfcq7O2CPGGPG_5yxt7w",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchTestimonials = async () => {
+      setLoading(true);
+      try {
+        const data = await testimonialService.getTestimonials();
         setTestimonials(data);
-      })
-      .catch((err) => console.error(err));
+      } catch (err) {
+        console.error("Error fetching testimonials:", err);
+        setError("Failed to load testimonials. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
   }, []);
 
-  if (!testimonials || testimonials.length === 0) {
-    return <div className="p-8">Loading testimonials...</div>;
-  }
+  const goToPrevious = () => {
+    if (testimonials.length === 0) return;
+    setActiveTestimonialIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
 
-  // Display up to 5 stacked authors on the left and use the selected testimonial on the right
-  const leftSideTestimonials = testimonials.slice(0, 5);
-  const activeTestimonial = testimonials[activeTestimonialIndex];
+  const goToNext = () => {
+    if (testimonials.length === 0) return;
+    setActiveTestimonialIndex(
+      (prevIndex) => (prevIndex + 1) % testimonials.length
+    );
+  };
 
   // Function to render star ratings based on the rating value
   const renderStars = (rating) => {
@@ -41,14 +57,20 @@ const Testimonials = () => {
     // Add full stars
     for (let i = 0; i < fullStars; i++) {
       stars.push(
-        <FaStar key={`full-${i}`} className="text-yellow-400 w-6 h-6 mr-1" />
+        <FaStar
+          key={`full-${i}`}
+          className="text-yellow-400 w-4 h-4 sm:w-5 sm:h-5 mr-1"
+        />
       );
     }
 
     // Add half star if needed
     if (hasHalfStar) {
       stars.push(
-        <FaStarHalfAlt key="half" className="text-yellow-400 w-6 h-6 mr-1" />
+        <FaStarHalfAlt
+          key="half"
+          className="text-yellow-400 w-4 h-4 sm:w-5 sm:h-5 mr-1"
+        />
       );
     }
 
@@ -57,7 +79,7 @@ const Testimonials = () => {
       stars.push(
         <FaRegStar
           key={`empty-${i}`}
-          className="text-yellow-400 w-6 h-6 mr-1"
+          className="text-yellow-400 w-4 h-4 sm:w-5 sm:h-5 mr-1"
         />
       );
     }
@@ -65,66 +87,198 @@ const Testimonials = () => {
     return stars;
   };
 
+  if (loading) {
+    return (
+      <section className="py-10 md:py-16 px-4 sm:px-8 bg-pink-100">
+        <div className="max-w-7xl mx-auto flex justify-center items-center min-h-[300px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#7d4744]"></div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !testimonials || testimonials.length === 0) {
+    return (
+      <section className="py-10 md:py-16 px-4 sm:px-8 bg-pink-100">
+        <div className="max-w-7xl mx-auto text-center text-gray-600 min-h-[300px] flex items-center justify-center">
+          {error || "No testimonials available at the moment."}
+        </div>
+      </section>
+    );
+  }
+
+  // Display up to 5 testimonials on desktop, and use pagination on mobile
+  const visibleTestimonials = testimonials.slice(0, 5);
+  const activeTestimonial = testimonials[activeTestimonialIndex];
+
   return (
     <section
-      className="py-12 px-8 bg-pink-100" // or use bg-[#FCEEEE] to match your design
+      className="py-10 md:py-16 px-4 sm:px-8 bg-pink-100"
       id="testimonials"
     >
-      {/* Section headings */}
-      <h2 className="text-3xl font-poppins font-medium text-maroon mb-2">
-        Why people ❤️ Invincible
-      </h2>
-      <h3 className="text-2xl font-poppins font-medium text-black mb-8">
-        Experience the best with us
-      </h3>
-
-      <div className="flex flex-col md:flex-row md:space-x-8">
-        {/* Left column: stacked list of authors */}
-        <div className="md:w-[35%] gap-y-3 mb-8 md:mb-0">
-          {leftSideTestimonials.map((t, idx) => (
-            <div
-              key={t.id || idx}
-              className={`flex items-center shadow-md rounded p-6 cursor-pointer transition-all duration-300 ${
-                activeTestimonialIndex === idx
-                  ? "bg-[#fff]"
-                  : "bg-[#e8dede] hover:bg-gray-50"
-              }`}
-              onClick={() => setActiveTestimonialIndex(idx)}
-            >
-              <img
-                src={t.profileImage}
-                alt={t.name}
-                className="w-16 h-16 rounded-full object-cover mr-4"
-              />
-              <div>
-                <h4 className="text-lg font-poppins font-medium">{t.name}</h4>
-                <span className="text-sm text-gray-600">{t.role}</span>
-              </div>
-            </div>
-          ))}
+      <div className="max-w-7xl mx-auto">
+        {/* Section headings with improved responsive text sizes */}
+        <div className="mb-6 md:mb-10 text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl font-poppins font-semibold text-[#7d4744] mb-2">
+            Why people ❤️ Invincible
+          </h2>
+          <p className="text-xl font-poppins font-medium text-[#5a4a42]">
+            Experience the best with us
+          </p>
         </div>
 
-        {/* Right column: star rating + main quote */}
-        <div className="md:w-[65%] bg-white p-8 shadow-md rounded relative">
-          {/* Star rating */}
-          <div className="flex mb-4">
-            {renderStars(activeTestimonial.ratings || 5)}
+        {/* Desktop Layout */}
+        <div className="hidden md:flex md:space-x-8">
+          {/* Left column: stacked list of authors */}
+          <div className="md:w-[35%] space-y-4">
+            {visibleTestimonials.map((testimonial, idx) => (
+              <button
+                key={testimonial.id || idx}
+                className={`w-full flex items-center rounded-lg p-4 cursor-pointer transition-all duration-300 ${
+                  activeTestimonialIndex === idx
+                    ? "bg-white shadow-md border-l-4 border-[#7d4744]"
+                    : "bg-pink-50 hover:bg-white hover:shadow-sm"
+                }`}
+                onClick={() => setActiveTestimonialIndex(idx)}
+                aria-label={`View testimonial from ${testimonial.name}`}
+              >
+                <img
+                  src={
+                    testimonial.profileImage ||
+                    "https://via.placeholder.com/64/CCCCCC/FFFFFF?text=User"
+                  }
+                  alt={testimonial.name}
+                  className="w-14 h-14 rounded-full object-cover mr-4 shadow"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://via.placeholder.com/64/CCCCCC/FFFFFF?text=User";
+                  }}
+                />
+                <div className="text-left">
+                  <h4 className="text-lg font-medium truncate">
+                    {testimonial.name}
+                  </h4>
+                  <div className="flex items-center">
+                    <div className="flex">
+                      {renderStars(testimonial.ratings || 5)}
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ))}
           </div>
-          {/* Main quote from the selected testimonial */}
-          <p className="text-xl md:text-2xl font-poppins text-black leading-relaxed italic mb-6">
-            "{activeTestimonial.review}"
-          </p>
 
-          {/* Author information */}
-          <div className="flex items-center mt-4">
-            <img
-              src={activeTestimonial.profileImage}
-              alt={activeTestimonial.name}
-              className="w-12 h-12 rounded-full object-cover mr-3"
-            />
-            <div>
-              <p className="font-semibold">{activeTestimonial.name}</p>
-              <p className="text-gray-600 text-sm">{activeTestimonial.role}</p>
+          {/* Right column: featured testimonial */}
+          <div className="md:w-[65%] bg-white p-6 md:p-8 shadow-md rounded-lg relative">
+            <FaQuoteLeft className="text-pink-100 text-4xl mb-4" />
+
+            {/* Main quote with ellipsis for long text */}
+            <p className="text-lg md:text-xl font-poppins text-gray-700 leading-relaxed italic mb-6 line-clamp-6 sm:line-clamp-none">
+              "{activeTestimonial.review}"
+            </p>
+
+            <div className="flex items-center justify-between mt-6">
+              {/* Author information */}
+              <div className="flex items-center">
+                <img
+                  src={
+                    activeTestimonial.profileImage ||
+                    "https://via.placeholder.com/64/CCCCCC/FFFFFF?text=User"
+                  }
+                  alt={activeTestimonial.name}
+                  className="w-16 h-16 rounded-full object-cover mr-4 shadow"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://via.placeholder.com/64/CCCCCC/FFFFFF?text=User";
+                  }}
+                />
+                <div>
+                  <p className="font-semibold text-lg">
+                    {activeTestimonial.name}
+                  </p>
+                  <p className="text-gray-600">
+                    {activeTestimonial.role || "Customer"}
+                  </p>
+                </div>
+              </div>
+
+              {/* Star rating */}
+              <div className="flex">
+                {renderStars(activeTestimonial.ratings || 5)}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout - Simplified carousel */}
+        <div className="md:hidden">
+          <div className="bg-white p-6 rounded-lg shadow-md relative">
+            <FaQuoteLeft className="text-pink-100 text-3xl mb-4" />
+
+            {/* Main quote */}
+            <p className="text-base text-gray-700 leading-relaxed italic mb-6">
+              "{activeTestimonial.review}"
+            </p>
+
+            {/* Star rating */}
+            <div className="flex mb-4">
+              {renderStars(activeTestimonial.ratings || 5)}
+            </div>
+
+            {/* Author information */}
+            <div className="flex items-center">
+              <img
+                src={
+                  activeTestimonial.profileImage ||
+                  "https://via.placeholder.com/48/CCCCCC/FFFFFF?text=User"
+                }
+                alt={activeTestimonial.name}
+                className="w-12 h-12 rounded-full object-cover mr-3 shadow"
+                onError={(e) => {
+                  e.target.src =
+                    "https://via.placeholder.com/48/CCCCCC/FFFFFF?text=User";
+                }}
+              />
+              <div>
+                <p className="font-semibold">{activeTestimonial.name}</p>
+                <p className="text-gray-600 text-sm">
+                  {activeTestimonial.role || "Customer"}
+                </p>
+              </div>
+            </div>
+
+            {/* Navigation arrows */}
+            <div className="flex justify-between mt-6">
+              <button
+                onClick={goToPrevious}
+                className="bg-pink-50 hover:bg-pink-100 text-[#7d4744] rounded-full p-2 transition-colors duration-200"
+                aria-label="Previous testimonial"
+              >
+                <FaChevronLeft />
+              </button>
+
+              <div className="flex space-x-1">
+                {testimonials.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`w-2 h-2 rounded-full ${
+                      idx === activeTestimonialIndex
+                        ? "bg-[#7d4744]"
+                        : "bg-gray-300"
+                    }`}
+                    onClick={() => setActiveTestimonialIndex(idx)}
+                    aria-label={`Go to testimonial ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={goToNext}
+                className="bg-pink-50 hover:bg-pink-100 text-[#7d4744] rounded-full p-2 transition-colors duration-200"
+                aria-label="Next testimonial"
+              >
+                <FaChevronRight />
+              </button>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { eventService } from "../api";
 
 function EpicAdventure() {
   const [events, setEvents] = useState([]);
@@ -11,10 +11,8 @@ function EpicAdventure() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(
-          "http://54.210.95.246:3005/api/v1/events/epic-adventure-events"
-        );
-        setEvents(response.data);
+        const data = await eventService.getEpicAdventureEvents();
+        setEvents(data);
         setLoading(false);
       } catch (err) {
         setError(

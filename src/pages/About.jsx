@@ -1,12 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { api } from "../api";
 
 function About() {
+  const [aboutData, setAboutData] = useState({
+    title: "About Us",
+    content: "",
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAboutData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await api.get("/info/about-us");
+
+        if (response.data) {
+          setAboutData(response.data);
+        }
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching about us data:", err);
+        setError("Failed to load content. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchAboutData();
+  }, []);
+
+  // Function to parse content into sections
+  const renderContentSections = () => {
+    if (!aboutData.content) return null;
+
+    // Split content by section headers (Vision, Mission, Objectives)
+    const sections = aboutData.content
+      .split(/\n\n(?=Vision|Mission|Objectives)/)
+      .filter(Boolean);
+
+    return sections.map((section, index) => {
+      const [title, ...contentParts] = section.split("\n\n");
+      const content = contentParts.join("\n\n");
+
+      return (
+        <section key={index} className="mb-12">
+          <h2 className="text-2xl font-semibold text-[#E25B32] mb-4">
+            {title}
+          </h2>
+          <p className="text-gray-700">{content}</p>
+        </section>
+      );
+    });
+  };
+
   return (
     <>
       {/* Orange header section */}
       <section className="w-full bg-[#E25B32] pt-20 pb-12">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-white">About Us</h1>
+          <h1 className="text-4xl font-bold text-white">{aboutData.title}</h1>
           <p className="text-xl text-white mt-2">
             Who we are & where do we stand
           </p>
@@ -16,47 +69,17 @@ function About() {
       {/* Content Sections */}
       <main className="flex flex-col items-center py-10 bg-white">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Vision Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-[#E25B32] mb-4">
-              Vision
-            </h2>
-            <p className="text-gray-700">
-              Keeping the core values and the ethics in center, HiddenSafari –
-              the NGO will be a benchmark in training the youth for a better
-              situation. The NGO will work for enhancement of all good qualities
-              in the modern youth with a brighter way
-            </p>
-          </section>
-
-          {/* Mission Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-[#E25B32] mb-4">
-              Mission
-            </h2>
-            <p className="text-gray-700">
-              The motive of the NGO is to moderate the young thinking for a
-              happy and developed world. The youth become responsible and
-              understand their own need for the society and country is the heart
-              value of the mission...
-            </p>
-          </section>
-
-          {/* Objectives Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-[#E25B32] mb-4">
-              Objectives
-            </h2>
-            <p className="text-gray-700">
-              The idea of establishing NGO came up during the various activities
-              with other NGOs as a part of collaboration with NSS/NCC in college
-              activities. It was a very clear view behind the organization that
-              it will be for young people and specially for the ones who need to
-              be trained for their better future.
-            </p>
-          </section>
-
-          {/* You can add more content sections as needed */}
+          {isLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#E25B32]"></div>
+            </div>
+          ) : error ? (
+            <div className="text-center py-10">
+              <p className="text-red-500">{error}</p>
+            </div>
+          ) : (
+            renderContentSections()
+          )}
         </div>
       </main>
     </>

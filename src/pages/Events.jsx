@@ -1,11 +1,131 @@
-import React, { useState } from "react";
-import HighlightedEvents from "../components/HighlightedEvents";
-import CarouselSection from "../components/CarouselSection";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faSnowflake,
+  faSun,
+  faMountain,
+  faStar,
+  faCalendarDay,
+  faMapMarkedAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { API_BASE_URL } from "../utils/apiConfig";
+
+// Utility function to generate random price between min and max range
+const generateRandomPrice = (min = 2000, max = 10000) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
 function Events() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [displayedEvents, setDisplayedEvents] = useState([]);
+  const [allEvents, setAllEvents] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [categories, setCategories] = useState([
+    { id: "all", name: "All Events", icon: faStar },
+  ]);
+
+  // Store categorized events for local filtering
+  const [categorizedEvents, setCategorizedEvents] = useState({});
+  const [initialDataLoaded, setInitialDataLoaded] = useState(false);
+
+  // Map of category names to icons
+  const categoryIcons = {
+    SnowTreks: faSnowflake,
+    SummerEvents: faSun,
+    MonsoonEvents: faCalendarDay,
+    EpicAdventures: faMountain,
+    SpecialEvents: faStar,
+    default: faMapMarkedAlt,
+  };
+
+  // Load all events data once
+  useEffect(() => {
+    if (initialDataLoaded) return;
+
+    const fetchAllEvents = async () => {
+      setIsLoading(true);
+      try {
+        const endpoint = `${API_BASE_URL}/events/all-events`;
+        const response = await axios.get(endpoint);
+
+        if (response.data && typeof response.data === "object") {
+          // Process categories and events
+          const dynamicCategories = [];
+          const allCategorizedEvents = {};
+          let allEvents = [];
+
+          // Extract events from each category
+          Object.keys(response.data).forEach((categoryKey) => {
+            if (categoryKey === "HighlightedEvents") return;
+
+            const categoryEvents = response.data[categoryKey];
+            if (Array.isArray(categoryEvents)) {
+              // Store events by category
+              allCategorizedEvents[categoryKey] = categoryEvents;
+
+              // Format category name for display (e.g., "SnowTreks" -> "Snow Treks")
+              let categoryName = categoryKey.replace(/([A-Z])/g, " $1").trim();
+              const categoryId = categoryKey.toLowerCase().replace(/\s/g, "-");
+
+              // Format events
+              const formattedEvents = categoryEvents.map((event) => ({
+                id: event.id,
+                title: event.heading || "Unnamed Event",
+                image:
+                  event.bannerImages1 ||
+                  event.bannerImages2 ||
+                  event.bannerImages3 ||
+                  "https://via.placeholder.com/400x200?text=No+Image",
+                price: generateRandomPrice(),
+                duration: `${event.numberOfDays || 0} Days`,
+                category: categoryKey,
+                categoryId: categoryId,
+              }));
+
+              // Collect all events
+              allEvents = [...allEvents, ...formattedEvents];
+
+              // Add to categories list
+              if (!dynamicCategories.some((cat) => cat.id === categoryId)) {
+                dynamicCategories.push({
+                  id: categoryId,
+                  name: categoryName,
+                  icon: categoryIcons[categoryKey] || categoryIcons["default"],
+                  originalKey: categoryKey,
+                });
+              }
+            }
+          });
+
+          // Update states
+          setCategories([
+            { id: "all", name: "All Events", icon: faStar },
+            ...dynamicCategories,
+          ]);
+
+          setCategorizedEvents(allCategorizedEvents);
+
+          // Randomize all events for initial display
+          allEvents.sort(() => Math.random() - 0.5);
+          setAllEvents(allEvents);
+          setDisplayedEvents(allEvents.slice(0, visibleCount));
+          setInitialDataLoaded(true);
+        }
+      } catch (err) {
+        console.error("Error fetching events:", err);
+        setError("Failed to fetch events. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchAllEvents();
+  }, [initialDataLoaded, visibleCount]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -13,9 +133,130 @@ function Events() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Implement search functionality
-    console.log("Searching for:", searchQuery);
+
+    if (!searchQuery.trim()) {
+      setDisplayedEvents(allEvents.slice(0, visibleCount));
+      return;
+    }
+
+    // Filter events based on search query
+    const lowercaseQuery = searchQuery.toLowerCase();
+    const filteredEvents = allEvents.filter(
+      (event) =>
+        (event.title && event.title.toLowerCase().includes(lowercaseQuery)) ||
+        (event.price && event.price.toString().includes(lowercaseQuery)) ||
+        (event.duration &&
+          event.duration.toLowerCase().includes(lowercaseQuery))
+    );
+
+    setDisplayedEvents(filteredEvents);
+    setVisibleCount(
+      Math.max(
+        6,
+        filteredEvents.length < visibleCount
+          ? filteredEvents.length
+          : visibleCount
+      )
+    );
   };
+
+  const handleLoadMore = () => {
+    const newVisibleCount = visibleCount + 3;
+    setVisibleCount(newVisibleCount);
+
+    // Only update displayed events if there's an active search
+    if (searchQuery.trim()) {
+      const lowercaseQuery = searchQuery.toLowerCase();
+      const filteredEvents = allEvents.filter(
+        (event) =>
+          (event.title && event.title.toLowerCase().includes(lowercaseQuery)) ||
+          (event.price && event.price.toString().includes(lowercaseQuery)) ||
+          (event.duration &&
+            event.duration.toLowerCase().includes(lowercaseQuery))
+      );
+      setDisplayedEvents(filteredEvents.slice(0, newVisibleCount));
+    } else {
+      setDisplayedEvents(allEvents.slice(0, newVisibleCount));
+    }
+  };
+
+  const handleCategoryChange = (category) => {
+    if (!initialDataLoaded) return;
+
+    setActiveCategory(category);
+    setVisibleCount(6);
+    setSearchQuery("");
+
+    // Filter events based on the selected category using local data
+    let filteredEvents = [];
+
+    if (category === "all") {
+      // For "all" category, combine all events
+      filteredEvents = Object.keys(categorizedEvents)
+        .flatMap((categoryKey) =>
+          categorizedEvents[categoryKey].map((event) => ({
+            id: event.id,
+            title: event.heading || "Unnamed Event",
+            image:
+              event.bannerImages1 ||
+              event.bannerImages2 ||
+              event.bannerImages3 ||
+              "https://via.placeholder.com/400x200?text=No+Image",
+            price: generateRandomPrice(),
+            duration: `${event.numberOfDays || 0} Days`,
+            category: categoryKey,
+          }))
+        )
+        .sort(() => Math.random() - 0.5);
+    } else {
+      // For a specific category
+      const selectedCategory = categories.find((cat) => cat.id === category);
+      if (selectedCategory?.originalKey) {
+        const categoryEvents =
+          categorizedEvents[selectedCategory.originalKey] || [];
+        filteredEvents = categoryEvents.map((event) => ({
+          id: event.id,
+          title: event.heading || "Unnamed Event",
+          image:
+            event.bannerImages1 ||
+            event.bannerImages2 ||
+            event.bannerImages3 ||
+            "https://via.placeholder.com/400x200?text=No+Image",
+          price: generateRandomPrice(),
+          duration: `${event.numberOfDays || 0} Days`,
+          category: selectedCategory.originalKey,
+        }));
+      }
+    }
+
+    setAllEvents(filteredEvents);
+    setDisplayedEvents(filteredEvents.slice(0, 6));
+  };
+
+  const EventCard = ({ event }) => (
+    <div className="rounded-lg overflow-hidden shadow-lg">
+      <img
+        src={event.image}
+        alt={event.title}
+        className="w-full h-48 object-cover"
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = "https://via.placeholder.com/400x200?text=No+Image";
+        }}
+      />
+      <div className="p-4">
+        <h3 className="text-xl font-semibold">{event.title}</h3>
+        <div className="flex justify-between items-center mt-2">
+          <p className="text-gray-700">
+            {event.price ? `From $ ${event.price}` : "Price upon request"}
+          </p>
+          <p className="text-gray-600 text-sm">
+            {event.duration || "Flexible"}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -29,17 +270,20 @@ function Events() {
 
           {/* Search bar */}
           <div className="mt-6 flex justify-end">
-            <form onSubmit={handleSearchSubmit} className="relative w-72">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="relative w-full max-w-md"
+            >
               <input
                 type="text"
                 placeholder="Search Here"
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="w-full py-2 px-4 pr-10 rounded-full text-gray-700 focus:outline-none"
+                className="w-full py-2 px-4 rounded-full text-gray-700 bg-white focus:outline-none"
               />
               <button
                 type="submit"
-                className="absolute inset-y-0 right-0 flex items-center justify-center w-10 text-gray-600"
+                className="absolute inset-y-0 right-0 px-6 rounded-r-full bg-[#D85732] text-white flex items-center justify-center"
               >
                 <FontAwesomeIcon icon={faSearch} />
               </button>
@@ -48,104 +292,87 @@ function Events() {
         </div>
       </section>
 
-      {/* Main content */}
-      <main className="flex flex-col items-center py-10 bg-white">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Event cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {/* South Africa Safari Card */}
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="/src/assets/safari-zebras.jpg"
-                alt="Whole Of South Africa"
-                className="w-full h-48 object-cover"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://via.placeholder.com/400x200?text=South+Africa+Safari";
-                }}
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold">Whole Of South Africa</h3>
-                <div className="flex justify-between items-center mt-2">
-                  <p className="text-gray-700">From $ 3,560</p>
-                  <p className="text-gray-600 text-sm">10 Days/9 Nights</p>
-                </div>
-              </div>
-            </div>
+      {/* Main content with sidebar */}
+      <main className="flex flex-col md:flex-row bg-white">
+        {/* Category Sidebar - visible on desktop, hidden on mobile */}
+        <aside className="hidden md:block w-64 bg-gray-50 min-h-screen p-6 border-r border-gray-200">
+          <h2 className="text-xl font-bold mb-6 text-gray-800">Categories</h2>
+          <nav>
+            <ul className="space-y-2">
+              {categories.map((category) => (
+                <li key={category.id}>
+                  <button
+                    onClick={() => handleCategoryChange(category.id)}
+                    className={`w-full text-left py-3 px-4 rounded-lg flex items-center space-x-3 transition-colors ${
+                      activeCategory === category.id
+                        ? "bg-[#E25B32] text-white"
+                        : "text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    <FontAwesomeIcon icon={category.icon} className="w-5 h-5" />
+                    <span>{category.name}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
 
-            {/* South Africa with Mauritius Card */}
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="/src/assets/mauritius-sunset.jpg"
-                alt="South Africa with Mauritius"
-                className="w-full h-48 object-cover"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://via.placeholder.com/400x200?text=South+Africa+With+Mauritius";
-                }}
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold">
-                  South Africa with Mauritius
-                </h3>
-                <div className="flex justify-between items-center mt-2">
-                  <p className="text-gray-700">From $ 4,050</p>
-                  <p className="text-gray-600 text-sm">15 Days/14 Nights</p>
-                </div>
-              </div>
-            </div>
+        {/* Mobile categories dropdown (visible only on mobile) */}
+        <div className="md:hidden w-full bg-gray-50 p-4 border-b border-gray-200">
+          <select
+            value={activeCategory}
+            onChange={(e) => handleCategoryChange(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded-md bg-white"
+          >
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
-            {/* Splendid South Africa Card */}
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="/src/assets/splendid-africa.jpg"
-                alt="Splendid South Africa"
-                className="w-full h-48 object-cover"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://via.placeholder.com/400x200?text=Splendid+South+Africa";
-                }}
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold">Splendid South Africa</h3>
-                <div className="flex justify-between items-center mt-2">
-                  <p className="text-gray-700">From $ 3,280</p>
-                  <p className="text-gray-600 text-sm">10 Days/10 Nights</p>
-                </div>
+        {/* Events content */}
+        <div className="flex-1 py-10 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            {isLoading ? (
+              <div className="flex justify-center items-center h-60">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#E25B32]"></div>
               </div>
-            </div>
+            ) : error ? (
+              <div className="text-center py-10">
+                <p className="text-red-500">{error}</p>
+              </div>
+            ) : displayedEvents.length === 0 ? (
+              <div className="text-center py-10">
+                <p className="text-gray-500">
+                  No events found for this category.
+                </p>
+              </div>
+            ) : (
+              <>
+                {/* Event cards grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                  {displayedEvents.map((event) => (
+                    <EventCard key={event.id} event={event} />
+                  ))}
+                </div>
+
+                {/* Load More button - only show if there are more events to load */}
+                {visibleCount < allEvents.length && (
+                  <div className="flex justify-center mb-12">
+                    <button
+                      onClick={handleLoadMore}
+                      className="bg-[#E25B32] hover:bg-[#D85732] text-white font-medium py-2 px-6 rounded-full transition duration-300"
+                    >
+                      Load More
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
           </div>
-
-          {/* Original carousels - you can keep or remove these as needed */}
-          <HighlightedEvents />
-
-          <CarouselSection
-            category="snow-treks"
-            title="Snow Treks"
-            subTitle="Experience the magic of winter landscapes with our guided snow treks"
-            apiEndpoint="http://54.210.95.246:3005/api/v1/events/snow-treks-events"
-          />
-          <CarouselSection
-            category="summer-events"
-            title="Summer Events"
-            subTitle="Join our exciting range of summer activities"
-            apiEndpoint="http://54.210.95.246:3005/api/v1/events/summer-events"
-          />
-          <CarouselSection
-            category="epic-adventure"
-            title="Epic Adventure"
-            subTitle="Push your limits with our most thrilling outdoor challenges."
-            apiEndpoint="http://54.210.95.246:3005/api/v1/events/epic-adventure-events"
-          />
-          <CarouselSection
-            category="special-events"
-            title="Special Events"
-            subTitle="Unique, limited-time gatherings that celebrate remarkable occasions"
-            apiEndpoint="http://54.210.95.246:3005/api/v1/events/special-events"
-          />
         </div>
       </main>
     </>

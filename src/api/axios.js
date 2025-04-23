@@ -1,8 +1,9 @@
 import axios from "axios";
+import { API_BASE_URL, API_TOKEN } from "../utils/apiConfig";
 
-// Base API configuration
+// Base API configuration with environment variable
 const api = axios.create({
-  baseURL: "http://54.210.95.246:3005/api/v1",
+  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -12,10 +13,10 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     // You can add auth tokens here if needed
-    // const token = localStorage.getItem('authToken');
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
+    const token = API_TOKEN || localStorage.getItem("authToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {

@@ -1,5 +1,5 @@
 import api from "../axios";
-import ENDPOINTS from "../endpoints";
+import { ENDPOINTS } from "../../utils/apiConfig";
 
 /**
  * Service for handling all testimonial-related API calls
@@ -11,7 +11,7 @@ const testimonialService = {
    */
   getTestimonials: async () => {
     try {
-      const response = await api.get(ENDPOINTS.TESTIMONIALS.LIST);
+      const response = await api.get(ENDPOINTS.TESTIMONIALS);
       return response.data;
     } catch (error) {
       console.error("Error fetching testimonials:", error);
@@ -26,10 +26,7 @@ const testimonialService = {
    */
   submitTestimonial: async (testimonialData) => {
     try {
-      const response = await api.post(
-        ENDPOINTS.TESTIMONIALS.SUBMIT,
-        testimonialData
-      );
+      const response = await api.post(ENDPOINTS.TESTIMONIALS, testimonialData);
       return response.data;
     } catch (error) {
       console.error("Error submitting testimonial:", error);

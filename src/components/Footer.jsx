@@ -4,43 +4,60 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#CCB2B2] border-t border-black py-3">
+    <footer className="bg-[#CCB2B2] border-t border-black py-6 sm:py-8">
       {/* Constrain the content's max width and center it */}
-      <div className="mx-auto max-w-6xl px-8 flex flex-col">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col">
         {/* Brand Title */}
-        <h2 className="text-3xl font-normal text-center mb-2">HiddenSafari</h2>
+        <h2 className="text-2xl sm:text-3xl font-normal text-center mb-4 sm:mb-6">
+          HiddenSafari
+        </h2>
 
         {/* Navigation Links */}
-        <nav className="flex justify-center space-x-10 text-base mb-3">
-          <Link to="/team" className="hover:underline">
+        <nav className="flex flex-wrap justify-center mb-6 sm:mb-8">
+          <Link
+            to="/team"
+            className="hover:underline mx-2 my-1 sm:my-0 sm:mx-4"
+          >
             Teams
           </Link>
-          <Link to="/about" className="hover:underline">
+          <Link
+            to="/about"
+            className="hover:underline mx-2 my-1 sm:my-0 sm:mx-4"
+          >
             About
           </Link>
-          <Link to="/events" className="hover:underline">
+          <Link
+            to="/events"
+            className="hover:underline mx-2 my-1 sm:my-0 sm:mx-4"
+          >
             Events
           </Link>
-          <Link to="/contact" className="hover:underline">
+          <Link
+            to="/contact"
+            className="hover:underline mx-2 my-1 sm:my-0 sm:mx-4"
+          >
             Contact US
           </Link>
-          <Link to="/terms" className="hover:underline">
+          <Link
+            to="/terms"
+            className="hover:underline mx-2 my-1 sm:my-0 sm:mx-4"
+          >
             Terms and Condition
           </Link>
         </nav>
 
         {/* Bottom row: Email input + Social Icons */}
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:justify-between">
           {/* Email Form */}
-          <form className="relative flex items-center border-1 rounded-3xl border-b-gray-700">
+          <form className="relative flex items-center border rounded-3xl overflow-hidden shadow-sm w-full max-w-xs sm:max-w-md">
             <input
               type="email"
               placeholder="Enter your Email"
-              className=" px-3 py-1 w-36 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 border-0 outline-none"
+              className="px-3 py-2 w-full text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
             />
             <button
               type="submit"
-              className="items-center p-3 h-full  rounded-3xl bg-gray-700"
+              className="items-center p-2 sm:p-3 bg-gray-700 text-white"
               aria-label="Submit"
             >
               <svg
@@ -61,12 +78,12 @@ const Footer = () => {
           </form>
 
           {/* Social Icons */}
-          <div className="flex gap-x-2">
+          <div className="flex gap-x-3 mt-4 sm:mt-0">
             {/* LinkedIn */}
             <a
               href="#"
               aria-label="LinkedIn"
-              className="bg-white p-1 rounded-sm"
+              className="bg-white p-2 rounded-full hover:bg-gray-100 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +98,7 @@ const Footer = () => {
             <a
               href="#"
               aria-label="Facebook"
-              className="bg-white p-1 rounded-sm"
+              className="bg-white p-2 rounded-full hover:bg-gray-100 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +113,7 @@ const Footer = () => {
             <a
               href="#"
               aria-label="Twitter"
-              className="bg-white p-1 rounded-sm"
+              className="bg-white p-2 rounded-full hover:bg-gray-100 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +128,7 @@ const Footer = () => {
             <a
               href="#"
               aria-label="YouTube"
-              className="bg-white p-1 rounded-sm"
+              className="bg-white p-2 rounded-full hover:bg-gray-100 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,6 +140,11 @@ const Footer = () => {
               </svg>
             </a>
           </div>
+        </div>
+
+        {/* Copyright notice - Optional addition */}
+        <div className="mt-4 text-center text-xs text-gray-700">
+          © {new Date().getFullYear()} HiddenSafari. All rights reserved.
         </div>
       </div>
     </footer>

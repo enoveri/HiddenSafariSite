@@ -1,5 +1,13 @@
 import api from "../axios";
-import ENDPOINTS from "../endpoints";
+import { API_BASE_URL } from "../../utils/apiConfig";
+
+// Define auth endpoints
+const AUTH_ENDPOINTS = {
+  LOGIN: `${API_BASE_URL}/auth/login`,
+  REGISTER: `${API_BASE_URL}/auth/register`,
+  PROFILE: `${API_BASE_URL}/user/profile`,
+  UPDATE_PROFILE: `${API_BASE_URL}/user/profile`,
+};
 
 /**
  * Service for handling all authentication-related API calls
@@ -12,7 +20,7 @@ const authService = {
    */
   login: async (credentials) => {
     try {
-      const response = await api.post(ENDPOINTS.USER.LOGIN, credentials);
+      const response = await api.post(AUTH_ENDPOINTS.LOGIN, credentials);
       // Store auth token if needed
       if (response.data.token) {
         localStorage.setItem("authToken", response.data.token);
@@ -31,7 +39,7 @@ const authService = {
    */
   register: async (userData) => {
     try {
-      const response = await api.post(ENDPOINTS.USER.REGISTER, userData);
+      const response = await api.post(AUTH_ENDPOINTS.REGISTER, userData);
       return response.data;
     } catch (error) {
       console.error("Registration error:", error);
@@ -53,7 +61,7 @@ const authService = {
    */
   getUserProfile: async () => {
     try {
-      const response = await api.get(ENDPOINTS.USER.PROFILE);
+      const response = await api.get(AUTH_ENDPOINTS.PROFILE);
       return response.data;
     } catch (error) {
       console.error("Error fetching user profile:", error);
@@ -69,7 +77,7 @@ const authService = {
   updateUserProfile: async (profileData) => {
     try {
       const response = await api.put(
-        ENDPOINTS.USER.UPDATE_PROFILE,
+        AUTH_ENDPOINTS.UPDATE_PROFILE,
         profileData
       );
       return response.data;
