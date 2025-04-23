@@ -10,6 +10,7 @@ import EventDetail from "./pages/EventDetail";
 import SnowTreks from "./pages/SnowTreks";
 import SummerEvents from "./pages/SummerEvents";
 import EpicAdventure from "./pages/EpicAdventure";
+import Profile from "./pages/auth/Profile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -23,6 +24,9 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+
+        {/* Auth pages */}
+        <Route path="/profile" element={<Profile />} />
 
         {/* Dynamic event detail routes */}
         <Route path="/:category/:eventId" element={<EventDetail />} />

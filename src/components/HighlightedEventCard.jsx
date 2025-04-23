@@ -67,7 +67,7 @@ const HighlightedEventCard = ({ event }) => {
         {/* Content container */}
         <div className="absolute inset-0 flex flex-col justify-between p-4">
           {/* Top area - event details */}
-          <div>
+          <div className="flex justify-start items-start">
             {event.numberOfDays && (
               <div className="bg-white/90 text-[#7d4744] rounded-full py-1 px-3 inline-flex items-center text-sm font-medium mb-2 shadow-sm">
                 <FontAwesomeIcon icon={faClock} className="mr-1" />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import {
   faSearch,
   faSnowflake,
@@ -18,6 +19,7 @@ const generateRandomPrice = (min = 2000, max = 10000) => {
 };
 
 function Events() {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [displayedEvents, setDisplayedEvents] = useState([]);
   const [allEvents, setAllEvents] = useState([]);
@@ -234,7 +236,16 @@ function Events() {
   };
 
   const EventCard = ({ event }) => (
-    <div className="rounded-lg overflow-hidden shadow-lg">
+    <div
+      className="rounded-lg overflow-hidden shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300"
+      onClick={() =>
+        navigate(
+          `/${event.categoryId || event.category?.toLowerCase() || "events"}/${
+            event.id
+          }`
+        )
+      }
+    >
       <img
         src={event.image}
         alt={event.title}
@@ -247,9 +258,12 @@ function Events() {
       <div className="p-4">
         <h3 className="text-xl font-semibold">{event.title}</h3>
         <div className="flex justify-between items-center mt-2">
-          <p className="text-gray-700">
-            {event.price ? `From $ ${event.price}` : "Price upon request"}
-          </p>
+          <div className="flex flex-col">
+            <p className="text-sm text-gray-500">Price from</p>
+            <p className="text-green-600 font-bold">
+              US${event.price ? event.price.toFixed(2) : "N/A"}
+            </p>
+          </div>
           <p className="text-gray-600 text-sm">
             {event.duration || "Flexible"}
           </p>
