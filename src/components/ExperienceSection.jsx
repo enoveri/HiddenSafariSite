@@ -76,7 +76,7 @@ const ExperienceSection = () => {
     return () => sc.removeEventListener("scroll", update);
   }, [videos]);
 
-  // Autoplay & center active
+  // Autoplay & pause off-screen (no auto-centering)
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -90,11 +90,6 @@ const ExperienceSection = () => {
             vid.muted = mutedVideos[id];
             vid.play();
             setActiveVideoId(id);
-            // center
-            vid.parentElement.scrollIntoView({
-              behavior: "smooth",
-              inline: "center",
-            });
           } else {
             vid.pause();
             if (activeVideoId === id) setActiveVideoId(null);
@@ -146,7 +141,7 @@ const ExperienceSection = () => {
     if (vid) vid.muted = !mutedVideos[id];
   };
 
-  // Play/pause
+  // Play/pause (no auto-centering on click)
   const handleVideoToggle = (id) => {
     const vid = videoRefs.current[id];
     if (!vid) return;
@@ -156,10 +151,6 @@ const ExperienceSection = () => {
       activeVideoId && videoRefs.current[activeVideoId]?.pause();
       vid.play();
       setActiveVideoId(id);
-      vid.parentElement.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-      });
     }
   };
 
