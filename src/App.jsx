@@ -11,6 +11,7 @@ import SnowTreks from "./pages/SnowTreks";
 import SummerEvents from "./pages/SummerEvents";
 import EpicAdventure from "./pages/EpicAdventure";
 import Profile from "./pages/auth/Profile";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
         {/* Auth pages */}
         <Route path="/profile" element={<Profile />} />

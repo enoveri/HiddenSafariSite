@@ -39,7 +39,7 @@ const Footer = () => {
             Contact US
           </Link>
           <Link
-            to="/terms"
+            to="/terms-and-conditions"
             className="hover:underline mx-2 my-1 sm:my-0 sm:mx-4"
           >
             Terms and Condition
