@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
@@ -15,9 +15,21 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+// ScrollToTop component to reset scroll position on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   return (
     <div className="font-sans text-black overflow-hidden w-full">
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

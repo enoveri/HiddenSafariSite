@@ -157,7 +157,7 @@ const ExperienceSection = () => {
   return (
     <section
       className="w-full py-8 sm:py-12 px-4 sm:px-8 bg-[#ECD1D1]"
-      id="experience-yourself"
+      id="video-experience-section"
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 md:mb-8">
