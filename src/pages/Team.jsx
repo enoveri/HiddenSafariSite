@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../utils/apiConfig";
 
 function Team() {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -11,8 +12,9 @@ function Team() {
     const fetchTeamMembers = async () => {
       try {
         setIsLoading(true);
+        const endpoint = `${API_BASE_URL}/team`;
         const response = await axios.get(
-          "http://54.210.95.246:3005/api/v1/team"
+          endpoint
         );
         console.log("Team API response:", response.data);
 
