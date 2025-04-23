@@ -5,6 +5,7 @@ import {
   faPhone,
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import { API_BASE_URL } from "../utils/apiConfig";
 
 const Contact = () => {
   const [contactData, setContactData] = useState([]);
@@ -16,7 +17,7 @@ const Contact = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          "http://54.210.95.246:3005/api/v1/contact"
+          `${API_BASE_URL}/contact`
         );
         if (response.data) {
           setContactData(response.data);
