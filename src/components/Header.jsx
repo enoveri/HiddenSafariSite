@@ -90,7 +90,7 @@ const Header = () => {
             <img
               src="/logo-no-background.png"
               alt="Hidden Safari Logo"
-              className="h-16 md:h-20 lg:h-24"
+              className="h-16 md:h-20 lg:h-20"
             />
           </Link>
 
