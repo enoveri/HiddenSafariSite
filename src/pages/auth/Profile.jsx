@@ -13,7 +13,7 @@ import {
 
 const Profile = () => {
   const navigate = useNavigate();
-  
+
   // Initial state from localStorage
   const [userData, setUserData] = useState({
     name: "",
@@ -29,21 +29,21 @@ const Profile = () => {
 
   // Load user data from localStorage on component mount
   useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    
+    const savedUser = localStorage.getItem("user");
+
     if (savedUser) {
       try {
         const parsedUser = JSON.parse(savedUser);
-        
+
         // Update userData with information from authentication
-        setUserData(prevData => ({
+        setUserData((prevData) => ({
           ...prevData,
           name: parsedUser.name || prevData.name,
           username: parsedUser.username || prevData.username,
         }));
-        
+
         // Also update form data
-        setFormData(prevData => ({
+        setFormData((prevData) => ({
           ...prevData,
           name: parsedUser.name || prevData.name,
           username: parsedUser.username || prevData.username,
@@ -53,7 +53,7 @@ const Profile = () => {
       }
     } else {
       // Redirect to home page if no user is logged in
-      navigate('/');
+      navigate("/");
     }
   }, [navigate]);
 
@@ -97,22 +97,25 @@ const Profile = () => {
     e.preventDefault();
     setUserData(formData);
     setIsEditing(false);
-    
+
     // Update localStorage with new user data
-    const savedUser = localStorage.getItem('user');
+    const savedUser = localStorage.getItem("user");
     if (savedUser) {
       try {
         const parsedUser = JSON.parse(savedUser);
-        localStorage.setItem('user', JSON.stringify({
-          ...parsedUser,
-          name: formData.name,
-          username: formData.username
-        }));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...parsedUser,
+            name: formData.name,
+            username: formData.username,
+          })
+        );
       } catch (e) {
         console.error("Error updating user data");
       }
     }
-    
+
     alert("Profile updated successfully!");
   };
 
@@ -122,8 +125,8 @@ const Profile = () => {
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem('user');
-    navigate('/');
+    localStorage.removeItem("user");
+    navigate("/");
   };
 
   return (
@@ -131,7 +134,9 @@ const Profile = () => {
       {/* Orange header section */}
       <section className="w-full bg-[#E25B32] pt-20 pb-12">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-white">{userData.name}'s Profile</h1>
+          <h1 className="text-4xl font-bold text-white">
+            {userData.name}'s Profile
+          </h1>
           <p className="text-xl text-white mt-2">
             Manage your account and view your travel history
           </p>
@@ -426,7 +431,7 @@ const Profile = () => {
                     </span>
                     Notification Preferences
                   </button>
-                  <button 
+                  <button
                     className="w-full text-left p-3 hover:bg-gray-50 flex items-center"
                     onClick={handleSignOut}
                   >

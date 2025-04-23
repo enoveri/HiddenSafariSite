@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { infoService } from '../api/services';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { infoService } from "../api/services";
+import { Link } from "react-router-dom";
 
 const PrivacyPolicy = () => {
-  const [policyData, setPolicyData] = useState({ title: '', content: '' });
+  const [policyData, setPolicyData] = useState({ title: "", content: "" });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
         setPolicyData(data);
         setLoading(false);
       } catch (err) {
-        setError('Failed to load privacy policy');
+        setError("Failed to load privacy policy");
         setLoading(false);
       }
     };
@@ -36,7 +36,10 @@ const PrivacyPolicy = () => {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-red-600">Error</h1>
           <p className="mt-2">{error}</p>
-          <Link to="/" className="mt-4 inline-block text-blue-600 hover:underline">
+          <Link
+            to="/"
+            className="mt-4 inline-block text-blue-600 hover:underline"
+          >
             Return to home page
           </Link>
         </div>

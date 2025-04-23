@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { infoService } from '../api/services';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { infoService } from "../api/services";
+import { Link } from "react-router-dom";
 
 const TermsAndConditions = () => {
-  const [termsData, setTermsData] = useState({ title: '', content: '' });
+  const [termsData, setTermsData] = useState({ title: "", content: "" });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
         setTermsData(data);
         setLoading(false);
       } catch (err) {
-        setError('Failed to load terms and conditions');
+        setError("Failed to load terms and conditions");
         setLoading(false);
       }
     };
@@ -36,7 +36,10 @@ const TermsAndConditions = () => {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-red-600">Error</h1>
           <p className="mt-2">{error}</p>
-          <Link to="/" className="mt-4 inline-block text-blue-600 hover:underline">
+          <Link
+            to="/"
+            className="mt-4 inline-block text-blue-600 hover:underline"
+          >
             Return to home page
           </Link>
         </div>
