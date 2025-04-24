@@ -19,15 +19,14 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
+  // Fetch events
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        // Try using the api object first
         let response;
         try {
           response = await api.get(apiEndpoint);
         } catch (apiError) {
-          // If that fails, try with direct axios call as fallback
           console.warn("API module error, trying direct axios call:", apiError);
           response = await axios.get(apiEndpoint);
         }
@@ -40,7 +39,6 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
       } catch (err) {
         console.error("Error fetching events:", err);
         setError(err);
-        // Set empty array to prevent mapping errors
         setEvents([]);
       } finally {
         setLoading(false);
@@ -50,7 +48,7 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
     fetchEvents();
   }, [apiEndpoint]);
 
-  // Check scroll position to update navigation buttons visibility
+  // Update nav-button visibility on scroll/resize
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
@@ -63,36 +61,53 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
       );
     };
 
-    // Check on mount and whenever events change
     checkScrollable();
     scrollContainer.addEventListener("scroll", checkScrollable);
+    window.addEventListener("resize", checkScrollable);
 
     return () => {
       scrollContainer.removeEventListener("scroll", checkScrollable);
+      window.removeEventListener("resize", checkScrollable);
     };
   }, [events]);
 
-  // Handle image loading error by trying next banner
-  const handleImageError = (eventId, currentBanner) => {
-    const currentFallback = imageFallbacks[eventId] || 0;
-    const nextFallback = currentFallback + 1;
+  // Auto-slide every 5s on mobile only
+  useEffect(() => {
+    // only on mobile screens (≤ 768px)
+    if (!window.matchMedia("(max-width: 768px)").matches) return;
 
-    if (nextFallback <= 2) {
-      setImageFallbacks({
-        ...imageFallbacks,
-        [eventId]: nextFallback,
-      });
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const slide = () => {
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+      if (container.scrollLeft >= maxScrollLeft - 1) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+        setScrollPosition(0);
+      } else {
+        const newPos = Math.min(scrollPosition + 300, maxScrollLeft);
+        container.scrollTo({ left: newPos, behavior: "smooth" });
+        setScrollPosition(newPos);
+      }
+    };
+
+    const id = setInterval(slide, 5000);
+    return () => clearInterval(id);
+  }, [scrollPosition, events]);
+
+  // Image fallback handling
+  const handleImageError = (eventId) => {
+    const current = imageFallbacks[eventId] || 0;
+    if (current < 2) {
+      setImageFallbacks({ ...imageFallbacks, [eventId]: current + 1 });
     }
   };
 
-  // Get the current banner image URL to display
   const getBannerImageUrl = (event) => {
     if (!event)
       return "https://placehold.co/238x239/gray/white?text=Image+Unavailable";
-
-    const fallbackLevel = imageFallbacks[event.id] || 0;
-
-    switch (fallbackLevel) {
+    const fallback = imageFallbacks[event.id] || 0;
+    switch (fallback) {
       case 0:
         return event.bannerImages1 || event.bannerImage || event.image;
       case 1:
@@ -104,63 +119,47 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
     }
   };
 
+  // Manual scroll handlers
   const handleScrollLeft = () => {
-    if (scrollContainerRef.current) {
-      const newPosition = Math.max(0, scrollPosition - 300);
-      scrollContainerRef.current.scrollTo({
-        left: newPosition,
-        behavior: "smooth",
-      });
-      setScrollPosition(newPosition);
-    }
+    if (!scrollContainerRef.current) return;
+    const newPos = Math.max(0, scrollPosition - 300);
+    scrollContainerRef.current.scrollTo({ left: newPos, behavior: "smooth" });
+    setScrollPosition(newPos);
   };
 
   const handleScrollRight = () => {
-    if (scrollContainerRef.current) {
-      const newPosition = scrollPosition + 300;
-      scrollContainerRef.current.scrollTo({
-        left: newPosition,
-        behavior: "smooth",
-      });
-      setScrollPosition(newPosition);
-    }
+    if (!scrollContainerRef.current) return;
+    const newPos = scrollPosition + 300;
+    scrollContainerRef.current.scrollTo({ left: newPos, behavior: "smooth" });
+    setScrollPosition(newPos);
   };
 
-  // Touch scrolling handling for mobile
+  // Touch handlers
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [initialScrollLeft, setInitialScrollLeft] = useState(0);
 
   const handleTouchStart = (e) => {
-    if (!scrollContainerRef.current) return;
-
+    const container = scrollContainerRef.current;
+    if (!container) return;
     setIsDragging(true);
-    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
-    setInitialScrollLeft(scrollContainerRef.current.scrollLeft);
+    setStartX(e.touches[0].pageX - container.offsetLeft);
+    setInitialScrollLeft(container.scrollLeft);
   };
-
   const handleTouchMove = (e) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-
-    // Prevent default to stop page scrolling while dragging
+    if (!isDragging) return;
+    const container = scrollContainerRef.current;
     e.preventDefault();
-    try {
-      const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
-      const distance = (x - startX) * 1.5; // Multiply by 1.5 for faster scrolling
-      scrollContainerRef.current.scrollLeft = initialScrollLeft - distance;
-    } catch (err) {
-      console.error("Touch error:", err);
-    }
+    const x = e.touches[0].pageX - container.offsetLeft;
+    const distance = (x - startX) * 1.5;
+    container.scrollLeft = initialScrollLeft - distance;
   };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
+  const handleTouchEnd = () => setIsDragging(false);
 
   if (loading) {
     return (
       <div className="py-10 px-4 max-w-7xl mx-auto w-full flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#E25B32]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#E25B32]" />
       </div>
     );
   }
@@ -175,7 +174,6 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
 
   return (
     <section className="py-10 md:py-16 px-4 max-w-7xl mx-auto w-full">
-      {/* Section header with responsive text */}
       <div className="mb-6 md:mb-8">
         <h2 className="text-2xl md:text-3xl font-poppins font-medium text-[#733d3dde] mb-1 md:mb-2">
           {title}
@@ -185,9 +183,7 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
         </p>
       </div>
 
-      {/* Carousel with navigation */}
       <div className="relative">
-        {/* Left scroll button - only visible when scrollable left */}
         {canScrollLeft && (
           <button
             onClick={handleScrollLeft}
@@ -201,7 +197,6 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
           </button>
         )}
 
-        {/* Carousel container with touch events */}
         <div
           ref={scrollContainerRef}
           className="flex overflow-x-auto gap-4 md:gap-8 lg:gap-12 pb-6 hide-scrollbar scroll-smooth"
@@ -209,35 +204,26 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {events && events.length > 0 ? (
+          {events.length > 0 ? (
             events.slice(0, 8).map((event) => (
               <div
-                key={event.id || Math.random().toString(36)}
+                key={event.id}
                 className="flex-shrink-0 transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
               >
                 <Link
                   to={`/${category}/${event.id}`}
                   className="relative block w-[200px] sm:w-[225px] h-[280px] sm:h-[350px] rounded-lg overflow-hidden shadow-lg focus:outline-none focus:ring-2 focus:ring-[#E25B32]"
                 >
-                  {/* Image container with gradient overlay */}
                   <div className="h-full">
                     <img
                       src={getBannerImageUrl(event)}
                       alt={event.heading || "Event"}
                       className="w-full h-full object-cover"
-                      onError={() =>
-                        handleImageError(
-                          event.id,
-                          imageFallbacks[event.id] || 0
-                        )
-                      }
+                      onError={() => handleImageError(event.id)}
                     />
-                    {/* Gradient overlay for better text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   </div>
-
                   <div className="absolute inset-0 flex flex-col justify-between h-full">
-                    {/* Location name overlay with improved text legibility */}
                     <div className="p-3">
                       <h3 className="text-white text-xl font-bold uppercase tracking-wide text-shadow-md">
                         {event.heading || "Event"}
@@ -259,8 +245,7 @@ const CarouselSection = ({ category, title, subTitle, apiEndpoint }) => {
           )}
         </div>
 
-        {/* Right scroll button - only visible when scrollable right */}
-        {canScrollRight && events && events.length > 0 && (
+        {canScrollRight && events.length > 0 && (
           <button
             onClick={handleScrollRight}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#E25B32]"
