@@ -57,7 +57,7 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className="items-center p-2 sm:p-3 bg-gray-700 text-white"
+              className="items-center p-2 sm:p-3 bg-gray-700 text-white h-full absolute right-0 flex"
               aria-label="Subscribe"
             >
               <svg
