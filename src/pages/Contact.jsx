@@ -16,9 +16,7 @@ const Contact = () => {
     const fetchContactData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(
-          `${API_BASE_URL}/contact`
-        );
+        const response = await axios.get(`${API_BASE_URL}/contact`);
         if (response.data) {
           setContactData(response.data);
         }
@@ -116,69 +114,52 @@ const Contact = () => {
           )}
 
           {/* Contact Form Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div>
-              <h2 className="text-2xl font-semibold text-[#E25B32] mb-6">
-                Send Us a Message
-              </h2>
-              <form className="space-y-5">
-                <div>
-                  <label className="block text-gray-700 mb-1">Your Name</label>
-                  <input
-                    type="text"
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-700 mb-1">Subject</label>
-                  <input
-                    type="text"
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
-                    placeholder="Message subject"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-700 mb-1">Message</label>
-                  <textarea
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
-                    rows="5"
-                    placeholder="Type your message here..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="bg-[#E25B32] hover:bg-[#D85732] text-white py-3 px-6 rounded-md transition-colors"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-
-            {/* Map Section */}
-            <div>
-              <h2 className="text-2xl font-semibold text-[#E25B32] mb-6">
-                Find Us
-              </h2>
-              <div className="w-full h-[350px] bg-gray-100 rounded-lg overflow-hidden">
-                <iframe
-                  title="Office Map"
-                  className="w-full h-full border-0"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059445135!2d-74.25986613799748!3d40.69714941774136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1630596285395!5m2!1sen!2sin"
-                  loading="lazy"
-                ></iframe>
+          <div className="mx-auto max-w-lg">
+            <h2 className="text-2xl font-semibold text-[#E25B32] mb-6">
+              Send Us a Message
+            </h2>
+            <form className="space-y-5">
+              <div>
+                <label className="block text-gray-700 mb-1">Your Name</label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
+                  placeholder="Enter your name"
+                />
               </div>
-            </div>
+              <div>
+                <label className="block text-gray-700 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 mb-1">Subject</label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
+                  placeholder="Message subject"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 mb-1">Message</label>
+                <textarea
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E25B32] focus:border-transparent"
+                  rows="5"
+                  placeholder="Type your message here..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="bg-[#E25B32] hover:bg-[#D85732] text-white py-3 px-6 rounded-md transition-colors"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </main>
